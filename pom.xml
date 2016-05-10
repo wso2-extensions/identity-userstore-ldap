@@ -40,6 +40,43 @@
         <tag>HEAD</tag>
     </scm>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.wso2.orbit.org.apache.directory</groupId>
+                <artifactId>apacheds</artifactId>
+                <version>${orbit.version.apacheds}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.directory.server</groupId>
+                <artifactId>apacheds-protocol-ldap</artifactId>
+                <version>${apacheds.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.directory.server</groupId>
+                <artifactId>apacheds-protocol-kerberos</artifactId>
+                <version>${apacheds.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.directory.server</groupId>
+                <artifactId>apacheds-interceptor-kerberos</artifactId>
+                <version>${apacheds.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.directory.server</groupId>
+                <artifactId>apacheds-core-annotations</artifactId>
+                <version>${apacheds.core.version}</version>
+            </dependency>
+        </dependencies>
+
+    </dependencyManagement>
+
+    <properties>
+        <orbit.version.apacheds>1.5.7.wso2v4</orbit.version.apacheds>
+        <apacheds.core.version>1.5.7</apacheds.core.version>
+        <apacheds.imp.pkg.version.range>[1.5.7,2.0.0)</apacheds.imp.pkg.version.range>
+    </properties>
+
     <repositories>
         <repository>
             <id>wso2-nexus</id>

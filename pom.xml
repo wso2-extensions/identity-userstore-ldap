@@ -244,7 +244,7 @@
     </pluginRepositories>
 
     <properties>
-        <carbon.kernel.version>4.4.5</carbon.kernel.version>
+        <carbon.kernel.version>4.4.7</carbon.kernel.version>
         <carbon.identity.userstore.ldap.package.export.version>${project.version}
         </carbon.identity.userstore.ldap.package.export.version>
         <carbon.identity.framework.version>5.2.0</carbon.identity.framework.version>

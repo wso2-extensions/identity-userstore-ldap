@@ -247,7 +247,7 @@
         <carbon.kernel.version>4.4.7</carbon.kernel.version>
         <carbon.identity.userstore.ldap.package.export.version>${project.version}
         </carbon.identity.userstore.ldap.package.export.version>
-        <carbon.identity.framework.version>5.2.0</carbon.identity.framework.version>
+        <carbon.identity.framework.version>5.5.0-SNAPSHOT</carbon.identity.framework.version>
         <commons-io.wso2.version>2.4.0.wso2v1</commons-io.wso2.version>
 
         <orbit.version.apacheds>1.5.7.wso2v4</orbit.version.apacheds>

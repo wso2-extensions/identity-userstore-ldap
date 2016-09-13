@@ -24,7 +24,7 @@
         <version>1</version>
     </parent>
 
-    <groupId>org.wso2.carbon.identity</groupId>
+    <groupId>org.wso2.carbon.identity.userstore.ldap</groupId>
     <modelVersion>4.0.0</modelVersion>
     <version>5.1.2-SNAPSHOT</version>
     <artifactId>identity-userstore-ldap</artifactId>
@@ -50,7 +50,7 @@
                 <version>${carbon.kernel.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.wso2.carbon.identity</groupId>
+                <groupId>org.wso2.carbon.identity.framework</groupId>
                 <artifactId>org.wso2.carbon.identity.base</artifactId>
                 <version>${carbon.identity.framework.version}</version>
             </dependency>
@@ -61,7 +61,7 @@
             </dependency>
 
             <dependency>
-                <groupId>org.wso2.carbon.identity</groupId>
+                <groupId>org.wso2.carbon.identity.userstore.ldap</groupId>
                 <artifactId>org.wso2.carbon.ldap.server</artifactId>
                 <version>${project.version}</version>
             </dependency>

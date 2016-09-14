@@ -19,7 +19,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
-        <groupId>org.wso2.carbon.identity</groupId>
+        <groupId>org.wso2.carbon.identity.userstore.ldap</groupId>
         <artifactId>identity-userstore-ldap</artifactId>
         <relativePath>../../pom.xml</relativePath>
         <version>5.1.2-SNAPSHOT</version>
@@ -38,7 +38,7 @@
             <artifactId>apacheds</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon.identity</groupId>
+            <groupId>org.wso2.carbon.identity.userstore.ldap</groupId>
             <artifactId>org.wso2.carbon.ldap.server</artifactId>
         </dependency>
         <dependency>
@@ -102,7 +102,7 @@
                             </adviceFile>
                             <bundles>
                                 <bundleDef>org.wso2.orbit.org.apache.directory:apacheds</bundleDef>
-                                <bundleDef>org.wso2.carbon.identity:org.wso2.carbon.ldap.server</bundleDef>
+                                <bundleDef>org.wso2.carbon.identity.userstore.ldap:org.wso2.carbon.ldap.server</bundleDef>
                                 <bundleDef>commons-io.wso2:commons-io</bundleDef>
                             </bundles>
                             <importFeatures>

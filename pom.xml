@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
   ~
   ~ WSO2 Inc. licenses this file to you under the Apache License,
@@ -15,33 +14,26 @@
   ~ KIND, either express or implied.  See the License for the
   ~ specific language governing permissions and limitations
   ~ under the License.
-  -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+  --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <groupId>org.wso2</groupId>
         <artifactId>wso2</artifactId>
         <version>1</version>
     </parent>
-
     <groupId>org.wso2.carbon.identity.userstore.ldap</groupId>
     <modelVersion>4.0.0</modelVersion>
     <version>5.1.6-SNAPSHOT</version>
     <artifactId>identity-userstore-ldap</artifactId>
     <packaging>pom</packaging>
     <name>WSO2 Carbon User Store LDAP Module</name>
-    <description>
-
-    </description>
+    <description/>
     <url>http://wso2.org</url>
-
     <scm>
         <url>https://github.com/wso2-extensions/identity-userstore-ldap.git</url>
         <developerConnection>scm:git:https://github.com/wso2-extensions/identity-userstore-ldap.git</developerConnection>
         <connection>scm:git:https://github.com/wso2-extensions/identity-userstore-ldap.git</connection>
         <tag>HEAD</tag>
     </scm>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -59,13 +51,11 @@
                 <artifactId>commons-io</artifactId>
                 <version>${commons-io.wso2.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.wso2.carbon.identity.userstore.ldap</groupId>
                 <artifactId>org.wso2.carbon.ldap.server</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.wso2.orbit.org.apache.directory</groupId>
                 <artifactId>apacheds</artifactId>
@@ -108,7 +98,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <build>
         <pluginManagement>
             <plugins>
@@ -137,9 +126,65 @@
                         </instructions>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.8.0</version>
+                    <executions>
+                        <execution>
+                            <id>default-prepare-agent-by-coverage-enforcer</id>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                            <configuration>
+                                <propertyName>argLine</propertyName>
+                                <destFile>${project.build.directory}/jacoco.exec</destFile>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>default-report-by-coverage-enforcer</id>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                            <configuration>
+                                <dataFile>${project.build.directory}/jacoco.exec</dataFile>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>default-check-by-coverage-enforcer</id>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                            <configuration>
+                                <dataFile>${project.build.directory}/jacoco.exec</dataFile>
+                                <rules>
+                                    <!-- implementation is needed only for Maven 2 -->
+                                    <rule implementation="org.jacoco.maven.RuleConfiguration">
+                                        <element>BUNDLE</element>
+                                        <limits>
+                                            <!-- implementation is needed only for Maven 2 -->
+                                            <limit implementation="org.jacoco.report.check.Limit">
+                                                <counter>LINE</counter>
+                                                <value>COVEREDRATIO</value>
+                                                <minimum>0.0</minimum>
+                                            </limit>
+                                        </limits>
+                                    </rule>
+                                </rules>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.21.0</version>
+                    <configuration>
+                        <argLine>${argLine}</argLine>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -169,7 +214,6 @@
             </plugin>
         </plugins>
     </build>
-
     <repositories>
         <repository>
             <id>wso2-nexus</id>
@@ -181,7 +225,6 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
         </repository>
-
         <repository>
             <id>wso2.releases</id>
             <name>WSO2 internal Repository</name>
@@ -192,7 +235,6 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
         </repository>
-
         <repository>
             <id>wso2.snapshots</id>
             <name>Apache Snapshot Repository</name>
@@ -206,7 +248,6 @@
             </releases>
         </repository>
     </repositories>
-
     <pluginRepositories>
         <pluginRepository>
             <id>wso2.releases</id>
@@ -218,7 +259,6 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
         </pluginRepository>
-
         <pluginRepository>
             <id>wso2.snapshots</id>
             <name>WSO2 Snapshot Repository</name>
@@ -242,47 +282,34 @@
             </releases>
         </pluginRepository>
     </pluginRepositories>
-
     <properties>
         <carbon.kernel.version>4.4.7</carbon.kernel.version>
         <carbon.identity.userstore.ldap.package.export.version>${project.version}
         </carbon.identity.userstore.ldap.package.export.version>
         <carbon.identity.framework.version>5.5.0</carbon.identity.framework.version>
         <commons-io.wso2.version>2.4.0.wso2v1</commons-io.wso2.version>
-
         <orbit.version.apacheds>1.5.7.wso2v4</orbit.version.apacheds>
         <apacheds.core.version>1.5.7</apacheds.core.version>
         <org.slf4j.verison>1.6.1</org.slf4j.verison>
         <log4j.version>1.2.13</log4j.version>
-
         <maven.scr.plugin.version>1.7.2</maven.scr.plugin.version>
         <maven.bundle.plugin.version>2.4.0</maven.bundle.plugin.version>
         <maven.compiler.plugin.version>2.3.1</maven.compiler.plugin.version>
         <carbon.p2.plugin.version>1.5.3</carbon.p2.plugin.version>
-
         <carbon.kernel.package.import.version.range>[4.4.0, 5.0.0)</carbon.kernel.package.import.version.range>
         <carbon.logging.imp.pkg.version.range>[1.2.17, 2.0.0)</carbon.logging.imp.pkg.version.range>
         <carbon.user.api.imp.pkg.version.range>[1.0.1, 2.0.0)</carbon.user.api.imp.pkg.version.range>
-
         <carbon.identity.framework.package.import.version.range>[5.0.0, 6.0.0)
         </carbon.identity.framework.package.import.version.range>
-
         <commons.io.wso2.osgi.version.range>[2.4.0,3.0.0)</commons.io.wso2.osgi.version.range>
         <osgi.framework.imp.pkg.version.range>[1.7.0, 2.0.0)</osgi.framework.imp.pkg.version.range>
         <apacheds.imp.pkg.version.range>[1.5.7,2.0.0)</apacheds.imp.pkg.version.range>
         <org.slf4j.imp.pkg.version.range>[1.6.1,2.0.0)</org.slf4j.imp.pkg.version.range>
         <axiom.osgi.version.range>[1.2.11, 2.0.0)</axiom.osgi.version.range>
     </properties>
-
     <modules>
         <module>components/org.wso2.carbon.ldap.server</module>
         <module>features/org.wso2.carbon.ldap.server.feature</module>
         <module>features/org.wso2.carbon.ldap.server.server.feature</module>
     </modules>
-
 </project>
-
-
-
-
-

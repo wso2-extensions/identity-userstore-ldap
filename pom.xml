@@ -57,11 +57,6 @@
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.wso2.orbit.org.apache.directory</groupId>
-                <artifactId>apacheds</artifactId>
-                <version>${orbit.version.apacheds}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.apache.directory.server</groupId>
                 <artifactId>apacheds-protocol-ldap</artifactId>
                 <version>${apacheds.core.version}</version>
@@ -80,6 +75,16 @@
                 <groupId>org.apache.directory.server</groupId>
                 <artifactId>apacheds-core-annotations</artifactId>
                 <version>${apacheds.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.directory.server</groupId>
+                <artifactId>apacheds-core-jndi</artifactId>
+                <version>${apacheds.core.version}</version>
+            </dependency>
+            <dependency>
+                <artifactId>api-ldap-codec-standalone</artifactId>
+                <groupId>org.apache.directory.api</groupId>
+                <version>${apacheds.api.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
@@ -266,7 +271,8 @@
         <carbon.identity.framework.version>5.5.0</carbon.identity.framework.version>
         <commons-io.wso2.version>2.4.0.wso2v1</commons-io.wso2.version>
         <orbit.version.apacheds>1.5.7.wso2v4</orbit.version.apacheds>
-        <apacheds.core.version>1.5.7</apacheds.core.version>
+        <apacheds.core.version>2.0.0.AM25</apacheds.core.version>
+        <apacheds.api.version>2.0.0.AM2</apacheds.api.version>
         <org.slf4j.verison>1.6.1</org.slf4j.verison>
         <log4j.version>1.2.13</log4j.version>
         <maven.scr.plugin.version>1.7.2</maven.scr.plugin.version>
@@ -280,7 +286,7 @@
         </carbon.identity.framework.package.import.version.range>
         <commons.io.wso2.osgi.version.range>[2.4.0,3.0.0)</commons.io.wso2.osgi.version.range>
         <osgi.framework.imp.pkg.version.range>[1.7.0, 2.0.0)</osgi.framework.imp.pkg.version.range>
-        <apacheds.imp.pkg.version.range>[1.5.7,2.0.0)</apacheds.imp.pkg.version.range>
+        <apacheds.imp.pkg.version.range>[2.0.0, 3.0.0)</apacheds.imp.pkg.version.range>
         <org.slf4j.imp.pkg.version.range>[1.6.1,2.0.0)</org.slf4j.imp.pkg.version.range>
         <axiom.osgi.version.range>[1.2.11, 2.0.0)</axiom.osgi.version.range>
 	<jacoco.maven.plugin.version>0.8.0</jacoco.maven.plugin.version>

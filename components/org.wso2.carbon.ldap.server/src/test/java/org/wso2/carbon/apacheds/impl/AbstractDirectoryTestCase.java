@@ -172,6 +172,7 @@ public abstract class AbstractDirectoryTestCase extends TestCase {
                     try {
                         myMonitorObject.wait();
                     } catch (InterruptedException e) {
+                        System.out.println(e);
                     }
                 }
             }

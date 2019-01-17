@@ -18,31 +18,39 @@
  */
 package org.wso2.carbon.apacheds.impl;
 
+import org.apache.directory.api.ldap.model.constants.SchemaConstants;
+import org.apache.directory.api.ldap.model.name.Dn;
+import org.apache.directory.api.ldap.model.schema.LdapComparator;
+import org.apache.directory.api.ldap.model.schema.SchemaManager;
+import org.apache.directory.api.ldap.model.schema.comparators.NormalizingComparator;
+import org.apache.directory.api.ldap.model.schema.registries.ComparatorRegistry;
+import org.apache.directory.api.ldap.model.schema.registries.SchemaLoader;
+import org.apache.directory.api.ldap.schema.extractor.SchemaLdifExtractor;
+import org.apache.directory.api.ldap.schema.loader.LdifSchemaLoader;
+import org.apache.directory.api.ldap.schema.manager.impl.DefaultSchemaManager;
+import org.apache.directory.api.util.exception.Exceptions;
 import org.apache.directory.server.constants.ServerDNConstants;
 import org.apache.directory.server.core.DefaultDirectoryService;
-import org.apache.directory.server.core.DirectoryService;
-import org.apache.directory.server.core.factory.DirectoryServiceFactory;
-import org.apache.directory.server.core.factory.JdbmPartitionFactory;
-import org.apache.directory.server.core.factory.PartitionFactory;
-import org.apache.directory.server.core.partition.Partition;
+import org.apache.directory.server.core.api.CacheService;
+import org.apache.directory.server.core.api.DirectoryService;
+import org.apache.directory.server.core.api.InstanceLayout;
+import org.apache.directory.server.core.api.partition.Partition;
+import org.apache.directory.server.core.api.schema.SchemaPartition;
+import org.apache.directory.server.core.partition.impl.btree.jdbm.JdbmIndex;
+import org.apache.directory.server.core.partition.impl.btree.jdbm.JdbmPartition;
 import org.apache.directory.server.core.partition.ldif.LdifPartition;
-import org.apache.directory.server.core.schema.SchemaPartition;
 import org.apache.directory.server.i18n.I18n;
-import org.apache.directory.shared.ldap.constants.SchemaConstants;
-import org.apache.directory.shared.ldap.schema.SchemaManager;
-import org.apache.directory.shared.ldap.schema.ldif.extractor.SchemaLdifExtractor;
-import org.apache.directory.shared.ldap.schema.loader.ldif.LdifSchemaLoader;
-import org.apache.directory.shared.ldap.schema.manager.impl.DefaultSchemaManager;
-import org.apache.directory.shared.ldap.schema.registries.SchemaLoader;
-import org.apache.directory.shared.ldap.util.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.wso2.carbon.ldap.server.exception.DirectoryServerException;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-class CarbonDirectoryServiceFactory implements DirectoryServiceFactory {
+class CarbonDirectoryServiceFactory {
 
     /**
      * A logger for this class
@@ -54,21 +62,19 @@ class CarbonDirectoryServiceFactory implements DirectoryServiceFactory {
     /**
      * The default factory returns stock instances of a apacheds service with smart defaults
      */
-    public static final DirectoryServiceFactory DEFAULT = new CarbonDirectoryServiceFactory();
+    public static final CarbonDirectoryServiceFactory DEFAULT = new CarbonDirectoryServiceFactory();
     /**
      * The apacheds service.
      */
     private DirectoryService directoryService;
-    /**
-     * The partition factory.
-     */
-    private PartitionFactory partitionFactory;
+
     private String schemaZipStore;
 
     /* default access */
 
     @SuppressWarnings({"unchecked"})
     CarbonDirectoryServiceFactory() {
+
         try {
             // creating the instance here so that
             // we we can set some properties like access control, anon access
@@ -80,29 +86,9 @@ class CarbonDirectoryServiceFactory implements DirectoryServiceFactory {
             LOG.error(errorMessage);
             throw new RuntimeException(errorMessage, e);
         }
-
-        try {
-            String typeName = System.getProperty("apacheds.partition.factory");
-            if (typeName != null) {
-                Class<? extends PartitionFactory> type = (Class<? extends
-                        PartitionFactory>) Class.forName(typeName);
-                partitionFactory = type.newInstance();
-            } else {
-                partitionFactory = new JdbmPartitionFactory();
-            }
-        } catch (Exception e) {
-            String errorMessage = "Error instantiating custom partition factory";
-            LOG.error(errorMessage, e);
-            throw new RuntimeException(errorMessage, e);
-        }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void init(String name)
-            throws Exception {
+    public void init(String name) throws Exception {
 
         this.schemaZipStore = System.getProperty("schema.zip.store.location");
 
@@ -124,15 +110,16 @@ class CarbonDirectoryServiceFactory implements DirectoryServiceFactory {
      *
      * @param name Name of the working directory.
      */
-    private void buildWorkingDirectory(String name) {
+    private void buildWorkingDirectory(String name) throws IOException {
+
         String workingDirectory = System.getProperty("workingDirectory");
 
         if (workingDirectory == null) {
             workingDirectory = System.getProperty("java.io.tmpdir") + File.separator +
                     "server-work-" + name;
         }
-
-        directoryService.setWorkingDirectory(new File(workingDirectory));
+        InstanceLayout instanceLayout = new InstanceLayout(workingDirectory);
+        directoryService.setInstanceLayout(instanceLayout);
     }
 
     /**
@@ -140,41 +127,51 @@ class CarbonDirectoryServiceFactory implements DirectoryServiceFactory {
      *
      * @throws Exception If unable to extract schema files.
      */
-    private void initSchema()
-            throws Exception {
-        SchemaPartition schemaPartition = directoryService.getSchemaService().getSchemaPartition();
+    private void initSchema() throws Exception {
 
-        // Init the LdifPartition
-        LdifPartition ldifPartition = new LdifPartition();
-        String workingDirectory = directoryService.getWorkingDirectory().getPath();
-        ldifPartition.setWorkingDirectory(workingDirectory + File.separator + "schema");
+        File workingDirectory = directoryService.getInstanceLayout().getPartitionsDirectory();
 
         // Extract the schema on disk (a brand new one) and load the registries
         File schemaRepository = new File(workingDirectory, "schema");
         if (!schemaRepository.exists()) {
             SchemaLdifExtractor extractor =
-                    new CarbonSchemaLdifExtractor(new File(workingDirectory),
-                            new File(this.schemaZipStore));
+                    new CarbonSchemaLdifExtractor(workingDirectory, new File(this.schemaZipStore));
             extractor.extractOrCopy();
         }
 
-        schemaPartition.setWrappedPartition(ldifPartition);
-
         SchemaLoader loader = new LdifSchemaLoader(schemaRepository);
         SchemaManager schemaManager = new DefaultSchemaManager(loader);
-        directoryService.setSchemaManager(schemaManager);
 
         // We have to load the schema now, otherwise we won't be able
         // to initialize the Partitions, as we won't be able to parse
-        // and normalize their suffix DN
+        // and normalize their suffix Dn
         schemaManager.loadAllEnabled();
 
-        schemaPartition.setSchemaManager(schemaManager);
+        // Tell all the normalizer comparators that they should not normalize anything
+        ComparatorRegistry comparatorRegistry = schemaManager.getComparatorRegistry();
+
+        for (LdapComparator<?> comparator : comparatorRegistry) {
+            if (comparator instanceof NormalizingComparator) {
+                ((NormalizingComparator) comparator).setOnServer();
+            }
+        }
+
+        directoryService.setSchemaManager(schemaManager);
+
+        // Init the LdifPartition
+        LdifPartition ldifPartition = new LdifPartition(directoryService.getSchemaManager(), directoryService
+                .getDnFactory());
+//        String workingDirectory = directoryService.getInstanceLayout().getRunDirectory().getPath();
+        ldifPartition.setPartitionPath(new File(workingDirectory, "schema").toURI());
+
+        SchemaPartition schemaPartition = new SchemaPartition(schemaManager);
+        schemaPartition.setWrappedPartition(ldifPartition);
+        directoryService.setSchemaPartition(schemaPartition);
 
         List<Throwable> errors = schemaManager.getErrors();
 
         if (!errors.isEmpty()) {
-            throw new DirectoryServerException(I18n.err(I18n.ERR_317, ExceptionUtils.printErrors(errors)));
+            throw new DirectoryServerException(I18n.err(I18n.ERR_317, Exceptions.printErrors(errors)));
         }
     }
 
@@ -183,20 +180,22 @@ class CarbonDirectoryServiceFactory implements DirectoryServiceFactory {
      *
      * @throws Exception the exception
      */
-    private void initSystemPartition()
-            throws Exception {
+    private void initSystemPartition() throws Exception {
         // change the working apacheds to something that is unique
         // on the system and somewhere either under target apacheds
         // or somewhere in a temp area of the machine.
 
         // Inject the System Partition
-        Partition systemPartition = partitionFactory.createPartition(
-                "system", ServerDNConstants.SYSTEM_DN, PARTITION_CACHE_SIZE,
-                new File(directoryService.getWorkingDirectory(), "system"));
+        JdbmPartition systemPartition = new JdbmPartition(directoryService.getSchemaManager(), directoryService.getDnFactory());
+        systemPartition.setId("system");
+        systemPartition.setPartitionPath(new File(directoryService.getInstanceLayout().getPartitionsDirectory(),
+                systemPartition.getId()).toURI());
+        systemPartition.setSuffixDn(new Dn(ServerDNConstants.SYSTEM_DN));
         systemPartition.setSchemaManager(directoryService.getSchemaManager());
 
-        partitionFactory.addIndex(systemPartition, SchemaConstants.OBJECT_CLASS_AT,
-                INDEX_CACHE_SIZE);
+        Set indexedAttributes = new HashSet();
+        indexedAttributes.add(new JdbmIndex(SchemaConstants.OBJECT_CLASS_AT, false));
+        systemPartition.setIndexedAttributes(indexedAttributes);
 
         directoryService.setSystemPartition(systemPartition);
     }
@@ -208,34 +207,29 @@ class CarbonDirectoryServiceFactory implements DirectoryServiceFactory {
      * @throws Exception In case if unable to extract schema or if an error occurred when building
      *                   the working directory.
      */
-    private void build(String name)
-            throws Exception {
+    private void build(String name) throws Exception {
+
         directoryService.setInstanceId(name);
+        CacheService cacheService = new CacheService();
+        cacheService.initialize(directoryService.getInstanceLayout(), name);
+
+        directoryService.setCacheService(cacheService);
+
         buildWorkingDirectory(name);
 
         // Init the service now
         initSchema();
+        // Disable the ChangeLog system
+        directoryService.getChangeLog().setEnabled(false);
+        directoryService.setDenormalizeOpAttrsEnabled(true);
         initSystemPartition();
 
         directoryService.startup();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public DirectoryService getDirectoryService()
-            throws Exception {
-        return directoryService;
-    }
+    public DirectoryService getDirectoryService() throws Exception {
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public PartitionFactory getPartitionFactory()
-            throws Exception {
-        return partitionFactory;
+        return directoryService;
     }
 
 }

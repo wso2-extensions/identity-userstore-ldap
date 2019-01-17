@@ -53,27 +53,37 @@
             <artifactId>slf4j-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wso2.orbit.org.apache.directory</groupId>
-            <artifactId>apacheds</artifactId>
-        </dependency>
-        <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-protocol-ldap</artifactId>
-            <groupId>org.apache.directory.server</groupId>
         </dependency>
         <dependency>
+            <groupId>org.apache.directory.server</groupId>
+            <artifactId>apacheds-jdbm-partition</artifactId>
+            <version>2.0.0.AM25</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.directory.server</groupId>
+            <artifactId>apacheds-ldif-partition</artifactId>
+            <version>2.0.0.AM25</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-protocol-kerberos</artifactId>
-            <groupId>org.apache.directory.server</groupId>
         </dependency>
         <dependency>
+            <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-interceptor-kerberos</artifactId>
-            <groupId>org.apache.directory.server</groupId>
         </dependency>
         <dependency>
-            <artifactId>apacheds-core-annotations</artifactId>
+            <groupId>org.apache.directory.api</groupId>
+            <artifactId>api-ldap-codec-standalone</artifactId>
+        </dependency>
+        <dependency>
+            <artifactId>apacheds-core-jndi</artifactId>
             <groupId>org.apache.directory.server</groupId>
         </dependency>
     </dependencies>
@@ -114,8 +124,7 @@
                             version="${carbon.identity.framework.package.import.version.range}"
                         </Import-Package>
                         <Export-Package>
-                            org.wso2.carbon.ldap.server.*;
-                            version="${carbon.identity.userstore.ldap.package.export.version}"
+                            org.wso2.carbon.ldap.server.*;version="${carbon.identity.userstore.ldap.package.export.version}"
                         </Export-Package>
                         <DynamicImport-Package>*</DynamicImport-Package>
                         <Bundle-Activator>org.wso2.carbon.ldap.server.DirectoryActivator

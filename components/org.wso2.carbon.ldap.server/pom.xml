@@ -19,7 +19,7 @@
         <groupId>org.wso2.carbon.identity.userstore.ldap</groupId>
         <artifactId>identity-userstore-ldap</artifactId>
         <relativePath>../../pom.xml</relativePath>
-        <version>5.1.7</version>
+        <version>5.1.7-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>bundle</packaging>
@@ -63,12 +63,10 @@
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-jdbm-partition</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-ldif-partition</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>

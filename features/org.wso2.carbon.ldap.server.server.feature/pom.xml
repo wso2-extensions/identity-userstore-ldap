@@ -16,7 +16,8 @@
   ~  specific language governing permissions and limitations
   ~  under the License.
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
         <groupId>org.wso2.carbon.identity.userstore.ldap</groupId>
@@ -44,32 +45,26 @@
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-protocol-shared</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-interceptor-kerberos</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-i18n</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-xdbm-partition</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-jdbm-partition</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-kerberos-codec</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
@@ -78,108 +73,87 @@
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-core-constants</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-core</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-core-api</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-core-shared</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-core-avl</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-interceptors-admin</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-interceptors-authn</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-interceptors-number</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-interceptors-authz</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-interceptors-changelog</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-interceptors-collective</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-interceptors-event</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-interceptors-exception</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-interceptors-journal</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-interceptors-normalization</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-interceptors-operational</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-interceptors-referral</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-interceptors-schema</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-interceptors-subtree</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-interceptors-trigger</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-ldif-partition</artifactId>
-            <version>2.0.0.AM25</version>
         </dependency>
 
         <dependency>
@@ -189,109 +163,87 @@
         <dependency>
             <groupId>org.apache.directory.api</groupId>
             <artifactId>api-ldap-model</artifactId>
-            <version>2.0.0.AM2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.api</groupId>
             <artifactId>api-asn1-api</artifactId>
-            <version>2.0.0.AM2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.api</groupId>
             <artifactId>api-asn1-ber</artifactId>
-            <version>2.0.0.AM2</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.directory.api</groupId>
             <artifactId>api-i18n</artifactId>
-            <version>2.0.0.AM2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.api</groupId>
             <artifactId>api-util</artifactId>
-            <version>2.0.0.AM2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.api</groupId>
             <artifactId>api-ldap-codec-core</artifactId>
-            <version>2.0.0.AM2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.api</groupId>
             <artifactId>api-ldap-extras-util</artifactId>
-            <version>2.0.0.AM2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.api</groupId>
             <artifactId>api-ldap-schema-data</artifactId>
-            <version>2.0.0.AM2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.api</groupId>
             <artifactId>api-ldap-extras-aci</artifactId>
-            <version>2.0.0.AM2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.api</groupId>
             <artifactId>api-ldap-client-api</artifactId>
-            <version>2.0.0.AM2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.api</groupId>
             <artifactId>api-ldap-extras-codec</artifactId>
-            <version>2.0.0.AM2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.api</groupId>
             <artifactId>api-ldap-extras-codec-api</artifactId>
-            <version>2.0.0.AM2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.api</groupId>
             <artifactId>api-ldap-extras-trigger</artifactId>
-            <version>2.0.0.AM2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.api</groupId>
             <artifactId>api-ldap-extras-sp</artifactId>
-            <version>2.0.0.AM2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.api</groupId>
             <artifactId>api-ldap-net-mina</artifactId>
-            <version>2.0.0.AM2</version>
         </dependency>
 
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>1.11</version>
         </dependency>
         <dependency>
             <groupId>org.apache.mina</groupId>
             <artifactId>mina-core</artifactId>
-            <version>2.0.19</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-pool2</artifactId>
-            <version>2.6.0</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.orbit.org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>
-            <version>1.59.0.wso2v1</version>
         </dependency>
         <dependency>
             <groupId>net.sf.ehcache</groupId>
             <artifactId>ehcache</artifactId>
-            <version>2.10.4</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.orbit.org.apache.directory.jdbm</groupId>
             <artifactId>apacheds-jdbm</artifactId>
-            <version>2.0.0-M1.wso2v1</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon.identity.userstore.ldap</groupId>
@@ -428,9 +380,9 @@
                         <phase>install</phase>
                         <configuration>
                             <tasks>
-                                <delete dir="src/main/resources" />
-                                <delete dir="src/main" />
-                                <delete dir="src" />
+                                <delete dir="src/main/resources"/>
+                                <delete dir="src/main"/>
+                                <delete dir="src"/>
                             </tasks>
                         </configuration>
                         <goals>
@@ -441,5 +393,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

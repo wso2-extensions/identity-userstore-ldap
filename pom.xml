@@ -14,19 +14,23 @@
   ~ KIND, either express or implied.  See the License for the
   ~ specific language governing permissions and limitations
   ~ under the License.
-  --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
     <parent>
         <groupId>org.wso2</groupId>
         <artifactId>wso2</artifactId>
         <version>1</version>
     </parent>
+
     <groupId>org.wso2.carbon.identity.userstore.ldap</groupId>
     <modelVersion>4.0.0</modelVersion>
     <version>5.1.7-SNAPSHOT</version>
     <artifactId>identity-userstore-ldap</artifactId>
     <packaging>pom</packaging>
     <name>WSO2 Carbon User Store LDAP Module</name>
-    <description />
+    <description/>
     <url>http://wso2.org</url>
     <scm>
         <url>https://github.com/wso2-extensions/identity-userstore-ldap.git</url>
@@ -57,6 +61,11 @@
                 <version>${project.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.wso2.orbit.org.apache.directory</groupId>
+                <artifactId>apacheds</artifactId>
+                <version>${orbit.version.apacheds}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.directory.server</groupId>
                 <artifactId>apacheds-protocol-ldap</artifactId>
                 <version>${apacheds.core.version}</version>
@@ -69,11 +78,6 @@
             <dependency>
                 <groupId>org.apache.directory.server</groupId>
                 <artifactId>apacheds-interceptor-kerberos</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-core-annotations</artifactId>
                 <version>${apacheds.core.version}</version>
             </dependency>
             <dependency>
@@ -92,236 +96,34 @@
                 <version>${apacheds.core.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-protocol-shared</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-i18n</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-xdbm-partition</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-kerberos-codec</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-core-constants</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-core</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-core-api</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-core-shared</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-core-avl</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-interceptors-admin</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-interceptors-authn</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-interceptors-number</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-interceptors-authz</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-interceptors-changelog</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-interceptors-collective</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-interceptors-event</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-interceptors-exception</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-interceptors-journal</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-interceptors-normalization</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-interceptors-operational</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-interceptors-referral</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-interceptors-schema</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-interceptors-subtree</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.server</groupId>
-                <artifactId>apacheds-interceptors-trigger</artifactId>
-                <version>${apacheds.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.api</groupId>
-                <artifactId>api-ldap-model</artifactId>
-                <version>${apacheds.api.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.api</groupId>
-                <artifactId>api-asn1-api</artifactId>
-                <version>${apacheds.api.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.api</groupId>
-                <artifactId>api-asn1-ber</artifactId>
-                <version>${apacheds.api.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.apache.directory.api</groupId>
                 <artifactId>api-ldap-codec-standalone</artifactId>
                 <version>${apacheds.api.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.apache.directory.api</groupId>
-                <artifactId>api-i18n</artifactId>
-                <version>${apacheds.api.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.api</groupId>
-                <artifactId>api-util</artifactId>
-                <version>${apacheds.api.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.api</groupId>
-                <artifactId>api-ldap-codec-core</artifactId>
-                <version>${apacheds.api.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.api</groupId>
-                <artifactId>api-ldap-extras-util</artifactId>
-                <version>${apacheds.api.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.api</groupId>
-                <artifactId>api-ldap-schema-data</artifactId>
-                <version>${apacheds.api.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.api</groupId>
-                <artifactId>api-ldap-extras-aci</artifactId>
-                <version>${apacheds.api.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.api</groupId>
-                <artifactId>api-ldap-client-api</artifactId>
-                <version>${apacheds.api.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.api</groupId>
-                <artifactId>api-ldap-extras-codec</artifactId>
-                <version>${apacheds.api.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.api</groupId>
-                <artifactId>api-ldap-extras-codec-api</artifactId>
-                <version>${apacheds.api.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.api</groupId>
-                <artifactId>api-ldap-extras-trigger</artifactId>
-                <version>${apacheds.api.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.api</groupId>
-                <artifactId>api-ldap-extras-sp</artifactId>
-                <version>${apacheds.api.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.directory.api</groupId>
-                <artifactId>api-ldap-net-mina</artifactId>
-                <version>${apacheds.api.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>commons-codec</groupId>
                 <artifactId>commons-codec</artifactId>
-                <version>1.11</version>
+                <version>${commons.codec.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.mina</groupId>
                 <artifactId>mina-core</artifactId>
-                <version>2.0.19</version>
+                <version>${apache.mina.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-pool2</artifactId>
-                <version>2.6.0</version>
+                <version>${apache.commons.pool2.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.wso2.orbit.org.bouncycastle</groupId>
                 <artifactId>bcprov-jdk15on</artifactId>
-                <version>1.60.0.wso2v1</version>
+                <version>${orbit.bcprov.jdk15on.version}</version>
             </dependency>
             <dependency>
                 <groupId>net.sf.ehcache</groupId>
                 <artifactId>ehcache</artifactId>
-                <version>2.10.4</version>
-            </dependency>
-            <dependency>
-                <groupId>org.wso2.orbit.org.apache.directory.jdbm</groupId>
-                <artifactId>apacheds-jdbm</artifactId>
-                <version>2.0.0-M1.wso2v1</version>
+                <version>${sf.ehcache.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
@@ -507,16 +309,21 @@
         </carbon.identity.userstore.ldap.package.export.version>
         <carbon.identity.framework.version>5.5.0</carbon.identity.framework.version>
         <commons-io.wso2.version>2.4.0.wso2v1</commons-io.wso2.version>
-        <orbit.version.apacheds>1.5.7.wso2v4</orbit.version.apacheds>
         <apacheds.core.version>2.0.0.AM25</apacheds.core.version>
+        <orbit.version.apacheds>${apacheds.core.version}.wso2v1</orbit.version.apacheds>
         <apacheds.api.version>2.0.0.AM2</apacheds.api.version>
         <org.slf4j.verison>1.6.1</org.slf4j.verison>
         <log4j.version>1.2.13</log4j.version>
+        <commons.codec.version>1.11</commons.codec.version>
+        <apache.mina.version>2.0.19</apache.mina.version>
+        <apache.commons.pool2.version>2.6.0</apache.commons.pool2.version>
+        <orbit.bcprov.jdk15on.version>1.60.0.wso2v1</orbit.bcprov.jdk15on.version>
+        <sf.ehcache.version>2.10.4</sf.ehcache.version>
         <maven.scr.plugin.version>1.7.2</maven.scr.plugin.version>
         <maven.bundle.plugin.version>2.4.0</maven.bundle.plugin.version>
         <maven.compiler.plugin.version>2.3.1</maven.compiler.plugin.version>
         <carbon.p2.plugin.version>1.5.3</carbon.p2.plugin.version>
-        <carbon.kernel.package.import.version.range>[4.4.0, 5.0.0)</carbon.kernel.package.import.version.range>
+        <carbon.kernel.package.import.version.range>[4.4.37, 5.0.0)</carbon.kernel.package.import.version.range>
         <carbon.logging.imp.pkg.version.range>[1.2.17, 2.0.0)</carbon.logging.imp.pkg.version.range>
         <carbon.user.api.imp.pkg.version.range>[1.0.1, 2.0.0)</carbon.user.api.imp.pkg.version.range>
         <carbon.identity.framework.package.import.version.range>[5.0.0, 6.0.0)
@@ -526,8 +333,8 @@
         <apacheds.imp.pkg.version.range>[2.0.0, 3.0.0)</apacheds.imp.pkg.version.range>
         <org.slf4j.imp.pkg.version.range>[1.6.1,2.0.0)</org.slf4j.imp.pkg.version.range>
         <axiom.osgi.version.range>[1.2.11, 2.0.0)</axiom.osgi.version.range>
-	<jacoco.maven.plugin.version>0.8.0</jacoco.maven.plugin.version>
-	<maven.surefire.plugin.version>2.21.0</maven.surefire.plugin.version>
+        <jacoco.maven.plugin.version>0.8.0</jacoco.maven.plugin.version>
+        <maven.surefire.plugin.version>2.21.0</maven.surefire.plugin.version>
     </properties>
     <modules>
         <module>components/org.wso2.carbon.ldap.server</module>

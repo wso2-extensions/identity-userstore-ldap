@@ -35,193 +35,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-protocol-ldap</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-protocol-kerberos</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-protocol-shared</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-interceptor-kerberos</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-i18n</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-xdbm-partition</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-jdbm-partition</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-kerberos-codec</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-core-jndi</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-core-constants</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-core-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-core-shared</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-core-avl</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-interceptors-admin</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-interceptors-authn</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-interceptors-number</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-interceptors-authz</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-interceptors-changelog</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-interceptors-collective</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-interceptors-event</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-interceptors-exception</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-interceptors-journal</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-interceptors-normalization</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-interceptors-operational</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-interceptors-referral</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-interceptors-schema</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-interceptors-subtree</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-interceptors-trigger</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.server</groupId>
-            <artifactId>apacheds-ldif-partition</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.directory.api</groupId>
-            <artifactId>api-ldap-codec-standalone</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.api</groupId>
-            <artifactId>api-ldap-model</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.api</groupId>
-            <artifactId>api-asn1-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.api</groupId>
-            <artifactId>api-asn1-ber</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.api</groupId>
-            <artifactId>api-i18n</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.api</groupId>
-            <artifactId>api-util</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.api</groupId>
-            <artifactId>api-ldap-codec-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.api</groupId>
-            <artifactId>api-ldap-extras-util</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.api</groupId>
-            <artifactId>api-ldap-schema-data</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.api</groupId>
-            <artifactId>api-ldap-extras-aci</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.api</groupId>
-            <artifactId>api-ldap-client-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.api</groupId>
-            <artifactId>api-ldap-extras-codec</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.api</groupId>
-            <artifactId>api-ldap-extras-codec-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.api</groupId>
-            <artifactId>api-ldap-extras-trigger</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.api</groupId>
-            <artifactId>api-ldap-extras-sp</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.directory.api</groupId>
-            <artifactId>api-ldap-net-mina</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
         </dependency>
@@ -242,16 +55,16 @@
             <artifactId>ehcache</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wso2.orbit.org.apache.directory.jdbm</groupId>
-            <artifactId>apacheds-jdbm</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.wso2.carbon.identity.userstore.ldap</groupId>
             <artifactId>org.wso2.carbon.ldap.server</artifactId>
         </dependency>
         <dependency>
             <groupId>commons-io.wso2</groupId>
             <artifactId>commons-io</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.orbit.org.apache.directory</groupId>
+            <artifactId>apacheds</artifactId>
         </dependency>
     </dependencies>
 
@@ -307,60 +120,14 @@
                                 </properties>
                             </adviceFile>
                             <bundles>
-                                <bundleDef>org.apache.directory.server:apacheds-protocol-ldap</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-core</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-interceptors-admin</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-interceptors-authn</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-interceptors-number</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-interceptors-authz</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-interceptors-changelog</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-interceptors-collective</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-interceptors-event</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-interceptors-exception</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-interceptors-journal</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-interceptors-normalization</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-interceptors-operational</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-interceptors-referral</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-interceptors-schema</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-interceptors-subtree</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-interceptors-trigger</bundleDef>
-                                <bundleDef>org.apache.directory.api:api-ldap-extras-trigger</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-core-api</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-core-constants</bundleDef>
-                                <bundleDef>org.apache.directory.api:api-i18n</bundleDef>
-                                <bundleDef>org.apache.directory.api:api-ldap-extras-aci</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-i18n</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-protocol-shared</bundleDef>
-                                <bundleDef>org.wso2.orbit.org.apache.directory.jdbm:apacheds-jdbm</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-kerberos-codec</bundleDef>
-                                <bundleDef>org.apache.directory.api:api-asn1-ber</bundleDef>
-                                <bundleDef>org.apache.directory.api:api-ldap-client-api</bundleDef>
-                                <bundleDef>org.apache.directory.api:api-ldap-extras-codec-api</bundleDef>
-                                <bundleDef>org.apache.commons:commons-pool2</bundleDef>
-                                <bundleDef>org.apache.directory.api:api-ldap-extras-codec</bundleDef>
-                                <bundleDef>org.apache.directory.api:api-ldap-extras-sp</bundleDef>
-                                <bundleDef>org.apache.directory.api:api-ldap-extras-util</bundleDef>
-                                <bundleDef>org.apache.directory.api:api-ldap-codec-core</bundleDef>
-                                <bundleDef>org.apache.directory.api:api-ldap-model</bundleDef>
-                                <bundleDef>commons-codec:commons-codec</bundleDef>
-                                <bundleDef>org.apache.directory.api:api-ldap-schema-data</bundleDef>
-                                <bundleDef>org.apache.directory.api:api-util</bundleDef>
-                                <bundleDef>org.apache.mina:mina-core</bundleDef>
                                 <bundleDef>org.wso2.orbit.org.bouncycastle:bcprov-jdk15on</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-jdbm-partition</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-core-shared</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-core-avl</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-xdbm-partition</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-ldif-partition</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-protocol-kerberos</bundleDef>
-                                <bundleDef>org.apache.directory.api:api-asn1-api</bundleDef>
+                                <bundleDef>commons-codec:commons-codec</bundleDef>
+                                <bundleDef>org.apache.mina:mina-core</bundleDef>
                                 <bundleDef>net.sf.ehcache:ehcache</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-interceptor-kerberos</bundleDef>
-                                <bundleDef>org.apache.directory.api:api-ldap-codec-standalone</bundleDef>
-                                <bundleDef>org.apache.directory.api:api-ldap-net-mina</bundleDef>
-                                <bundleDef>org.apache.directory.server:apacheds-core-jndi</bundleDef>
                                 <bundleDef>org.wso2.carbon.identity.userstore.ldap:org.wso2.carbon.ldap.server</bundleDef>
+                                <bundleDef>org.wso2.orbit.org.apache.directory:apacheds</bundleDef>
                                 <bundleDef>commons-io.wso2:commons-io</bundleDef>
+                                <bundleDef>org.apache.commons:commons-pool2</bundleDef>
                             </bundles>
                             <importFeatures>
                                 <importFeatureDef>org.wso2.carbon.core:compatible:${carbon.kernel.version}

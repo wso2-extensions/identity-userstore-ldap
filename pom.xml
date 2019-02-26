@@ -329,6 +329,7 @@
         <carbon.identity.framework.package.import.version.range>[5.0.0, 6.0.0)
         </carbon.identity.framework.package.import.version.range>
         <commons.io.wso2.osgi.version.range>[2.4.0,3.0.0)</commons.io.wso2.osgi.version.range>
+        <org.apache.common.logging.version.range>[1.2.0, 2.0.0)</org.apache.common.logging.version.range>
         <osgi.framework.imp.pkg.version.range>[1.7.0, 2.0.0)</osgi.framework.imp.pkg.version.range>
         <apacheds.imp.pkg.version.range>[2.0.0, 3.0.0)</apacheds.imp.pkg.version.range>
         <org.slf4j.imp.pkg.version.range>[1.6.1,2.0.0)</org.slf4j.imp.pkg.version.range>

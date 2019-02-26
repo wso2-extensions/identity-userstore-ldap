@@ -108,10 +108,42 @@
 
                             org.apache.axiom.*; version="${axiom.osgi.version.range}",
                             org.apache.log4j; version="${carbon.logging.imp.pkg.version.range}",
+                            org.apache.commons.logging; version="${org.apache.common.logging.version.range}",
                             org.apache.commons.io; version="${commons.io.wso2.osgi.version.range}",
 
-                            org.apache.directory.server.*; version="${apacheds.imp.pkg.version.range}",
-                            org.apache.directory.shared.*; version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.server.constants;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.server.core;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.server.core.api;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.server.core.api.changelog;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.server.core.api.interceptor;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.server.core.api.partition;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.server.core.api.schema;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.server.core.jndi;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.server.core.kerberos;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.server.core.partition.impl.btree.jdbm;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.server.core.partition.ldif;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.server.i18n;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.server.kerberos;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.server.kerberos.kdc;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.server.ldap;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.server.ldap.handlers.extended;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.server.ldap.handlers.sasl.cramMD5;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.server.ldap.handlers.sasl.digestMD5;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.server.ldap.handlers.sasl.gssapi;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.server.ldap.handlers.sasl.ntlm;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.server.ldap.handlers.sasl.plain;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.server.protocol.shared.transport;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.shared.kerberos;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.api.ldap.model.exception;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.api.ldap.model.entry;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.api.ldap.model.name;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.api.ldap.model.schema;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.api.ldap.model.schema.registries;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.api.ldap.model.schema.comparators;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.api.ldap.model.constants;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.api.ldap.schema.extractor;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.api.ldap.schema.loader;version="${apacheds.imp.pkg.version.range}",
+                            org.apache.directory.api.ldap.schema.manager.impl;version="${apacheds.imp.pkg.version.range}",
 
                             org.osgi.framework; version="${osgi.framework.imp.pkg.version.range}",
 
@@ -123,7 +155,6 @@
                         <Export-Package>
                             org.wso2.carbon.ldap.server.*;version="${carbon.identity.userstore.ldap.package.export.version}"
                         </Export-Package>
-                        <DynamicImport-Package>*</DynamicImport-Package>
                         <Bundle-Activator>org.wso2.carbon.ldap.server.DirectoryActivator
                         </Bundle-Activator>
                         <DeployBefore>UserCore</DeployBefore>

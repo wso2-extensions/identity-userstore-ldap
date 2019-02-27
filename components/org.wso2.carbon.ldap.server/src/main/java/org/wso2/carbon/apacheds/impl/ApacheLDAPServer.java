@@ -382,6 +382,7 @@ public class ApacheLDAPServer implements LDAPServer {
     }
 
     private void setupSaslMechanisms() {
+
         Map<String, MechanismHandler> mechanismHandlerMap = new HashMap<String, MechanismHandler>();
 
         mechanismHandlerMap.put(SupportedSaslMechanisms.PLAIN, new PlainMechanismHandler());

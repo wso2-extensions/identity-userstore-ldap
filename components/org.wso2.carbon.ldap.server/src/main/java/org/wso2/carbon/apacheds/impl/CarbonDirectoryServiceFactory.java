@@ -34,7 +34,6 @@ import org.apache.directory.server.core.DefaultDirectoryService;
 import org.apache.directory.server.core.api.CacheService;
 import org.apache.directory.server.core.api.DirectoryService;
 import org.apache.directory.server.core.api.InstanceLayout;
-import org.apache.directory.server.core.api.partition.Partition;
 import org.apache.directory.server.core.api.schema.SchemaPartition;
 import org.apache.directory.server.core.partition.impl.btree.jdbm.JdbmIndex;
 import org.apache.directory.server.core.partition.impl.btree.jdbm.JdbmPartition;
@@ -161,7 +160,6 @@ class CarbonDirectoryServiceFactory {
         // Init the LdifPartition
         LdifPartition ldifPartition = new LdifPartition(directoryService.getSchemaManager(), directoryService
                 .getDnFactory());
-//        String workingDirectory = directoryService.getInstanceLayout().getRunDirectory().getPath();
         ldifPartition.setPartitionPath(new File(workingDirectory, "schema").toURI());
 
         SchemaPartition schemaPartition = new SchemaPartition(schemaManager);
@@ -186,7 +184,8 @@ class CarbonDirectoryServiceFactory {
         // or somewhere in a temp area of the machine.
 
         // Inject the System Partition
-        JdbmPartition systemPartition = new JdbmPartition(directoryService.getSchemaManager(), directoryService.getDnFactory());
+        JdbmPartition systemPartition = new JdbmPartition(directoryService.getSchemaManager(), directoryService
+                .getDnFactory());
         systemPartition.setId("system");
         systemPartition.setPartitionPath(new File(directoryService.getInstanceLayout().getPartitionsDirectory(),
                 systemPartition.getId()).toURI());

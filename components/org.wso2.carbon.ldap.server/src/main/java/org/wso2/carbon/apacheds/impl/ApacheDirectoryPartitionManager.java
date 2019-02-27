@@ -65,6 +65,7 @@ class ApacheDirectoryPartitionManager implements PartitionManager {
     private String workingDirectory;
 
     public ApacheDirectoryPartitionManager(DirectoryService directoryService, String wd) {
+
         this.directoryService = directoryService;
         this.workingDirectory = wd;
     }
@@ -132,7 +133,6 @@ class ApacheDirectoryPartitionManager implements PartitionManager {
                 this.directoryService.sync();
             }
 
-
         } catch (Exception e) {
             String errorMessage = "Could not add the partition";
             logger.error(errorMessage, e);
@@ -146,6 +146,7 @@ class ApacheDirectoryPartitionManager implements PartitionManager {
      */
     @Override
     public boolean partitionDirectoryExists(String partitionID) throws DirectoryServerException {
+
         boolean partitionDirectoryExists = false;
         String partitionDirectoryName = this.workingDirectory + File.separator + partitionID;
         File partitionDirectory = new File(partitionDirectoryName);
@@ -166,6 +167,7 @@ class ApacheDirectoryPartitionManager implements PartitionManager {
      */
     @Override
     public boolean partitionInitialized(String partitionId) {
+
         Set<? extends Partition> partitions = this.directoryService.getPartitions();
 
         for (Partition partition : partitions) {
@@ -182,6 +184,7 @@ class ApacheDirectoryPartitionManager implements PartitionManager {
      */
     @Override
     public int getNumberOfPartitions() {
+
         int numOfPartitions = 0; //if no partition is created
 
         Set<? extends Partition> partitions = this.directoryService.getPartitions();
@@ -234,7 +237,6 @@ class ApacheDirectoryPartitionManager implements PartitionManager {
             throw new DirectoryServerException("Error in initializing partition in directory service", e);
         }
 
-
     }
 
     /**
@@ -265,26 +267,22 @@ class ApacheDirectoryPartitionManager implements PartitionManager {
 
     @Override
     public void removeAllPartitions() throws DirectoryServerException {
+
         Set<? extends Partition> partitions = this.directoryService.getPartitions();
 
         for (Partition partition : partitions) {
-//            if (!"schema".equalsIgnoreCase(partition.getId())) {
-
-                try {
-
-                    if (logger.isDebugEnabled()) {
-                        logger.debug("Removing partition with id - " + partition.getId() + " suffix - " +
-                                partition.getSuffixDn().getName());
-                    }
-
-                    this.directoryService.removePartition(partition);
-                } catch (Exception e) {
-                    String msg = "Unable to remove partition with id " + partition.getId() +
-                            " with suffix " + partition.getSuffixDn().getName();
-                    logger.error(msg, e);
-                    throw new DirectoryServerException(msg, e);
+            try {
+                if (logger.isDebugEnabled()) {
+                    logger.debug("Removing partition with id - " + partition.getId() + " suffix - " +
+                            partition.getSuffixDn().getName());
                 }
-//            }
+                this.directoryService.removePartition(partition);
+            } catch (Exception e) {
+                String msg = "Unable to remove partition with id " + partition.getId() +
+                        " with suffix " + partition.getSuffixDn().getName();
+                logger.error(msg, e);
+                throw new DirectoryServerException(msg, e);
+            }
         }
     }
 
@@ -311,6 +309,7 @@ class ApacheDirectoryPartitionManager implements PartitionManager {
 
     private void addAccessControlAttributes(Entry serverEntry)
             throws LdapException {
+
         serverEntry.add("administrativeRole", "accessControlSpecificArea");
     }
 
@@ -397,6 +396,7 @@ class ApacheDirectoryPartitionManager implements PartitionManager {
     }
 
     private void addSharedGroupToPartition(String partitionSuffixDn) throws DirectoryServerException {
+
         Entry groupsEntry;
         try {
 
@@ -419,6 +419,7 @@ class ApacheDirectoryPartitionManager implements PartitionManager {
     }
 
     private Partition getPartition(String partitionSuffix) {
+
         Set availablePartitions = this.directoryService.getPartitions();
         Partition partition;
 
@@ -434,15 +435,15 @@ class ApacheDirectoryPartitionManager implements PartitionManager {
 
     private JdbmPartition createNewPartition(String partitionId, String partitionSuffix)
             throws DirectoryServerException {
+
         try {
-            JdbmPartition partition = new JdbmPartition(directoryService.getSchemaManager(), directoryService.getDnFactory());
+            JdbmPartition partition = new JdbmPartition(directoryService.getSchemaManager(), directoryService
+                    .getDnFactory());
             String partitionDirectoryName = this.workingDirectory + File.separator + partitionId;
 
             partition.setId(partitionId);
             partition.setSuffixDn(new Dn(partitionSuffix));
-//            .setPartitionPath(URI.create(partitionDirectoryName));
             partition.setPartitionPath(new File(partitionDirectoryName).toURI());
-
 
             Set<Index<?, String>> indexedAttrs = new HashSet<>();
 
@@ -467,7 +468,6 @@ class ApacheDirectoryPartitionManager implements PartitionManager {
             if (logger.isDebugEnabled()) {
                 logger.debug(message);
             }
-
 
             return partition;
 
@@ -583,7 +583,7 @@ class ApacheDirectoryPartitionManager implements PartitionManager {
 
         AdminGroupInfo groupInfo = adminInfo.getGroupInformation();
 
-        if (groupInfo != null && StringUtils.contains(groupInfo.getAdminRoleName(),"/")) {
+        if (groupInfo != null && StringUtils.contains(groupInfo.getAdminRoleName(), "/")) {
             String adminRole = groupInfo.getAdminRoleName();
             adminRole = adminRole.substring(adminRole.indexOf("/") + 1);
             groupInfo.setAdminRoleName(adminRole);
@@ -629,7 +629,8 @@ class ApacheDirectoryPartitionManager implements PartitionManager {
             adminInfo.setAdminUserName(admin);
         }
 
-        String domainName = adminInfo.getUsernameAttribute() + "=" + adminInfo.getAdminUserName() + "," + "ou=Users," + partitionSuffix;
+        String domainName = adminInfo.getUsernameAttribute() + "=" + adminInfo.getAdminUserName() + "," + "ou=Users,"
+                + partitionSuffix;
 
         try {
             Dn adminDn = new Dn(domainName);
@@ -658,7 +659,8 @@ class ApacheDirectoryPartitionManager implements PartitionManager {
                 adminEntry.add("mail", adminInfo.getAdminEmail());
             }
 
-            String principal = adminInfo.getAdminUserName() + "/" + MultitenantConstants.SUPER_TENANT_DOMAIN_NAME + "@" + realm;
+            String principal = adminInfo.getAdminUserName() + "/" + MultitenantConstants.SUPER_TENANT_DOMAIN_NAME +
+                    "@" + realm;
             adminEntry.put(KerberosAttribute.KRB5_PRINCIPAL_NAME_AT, principal);
             adminEntry.put(KerberosAttribute.KRB5_KEY_VERSION_NUMBER_AT, "0");
 

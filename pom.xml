@@ -304,10 +304,10 @@
         </pluginRepository>
     </pluginRepositories>
     <properties>
-        <carbon.kernel.version>4.4.7</carbon.kernel.version>
+        <carbon.kernel.version>4.5.0-m1</carbon.kernel.version>
         <carbon.identity.userstore.ldap.package.export.version>${project.version}
         </carbon.identity.userstore.ldap.package.export.version>
-        <carbon.identity.framework.version>5.5.0</carbon.identity.framework.version>
+        <carbon.identity.framework.version>5.13.4</carbon.identity.framework.version>
         <commons-io.wso2.version>2.4.0.wso2v1</commons-io.wso2.version>
         <apacheds.core.version>2.0.0.AM25</apacheds.core.version>
         <orbit.version.apacheds>${apacheds.core.version}.wso2v1</orbit.version.apacheds>
@@ -323,10 +323,10 @@
         <maven.bundle.plugin.version>2.4.0</maven.bundle.plugin.version>
         <maven.compiler.plugin.version>2.3.1</maven.compiler.plugin.version>
         <carbon.p2.plugin.version>1.5.3</carbon.p2.plugin.version>
-        <carbon.kernel.package.import.version.range>[4.4.37, 5.0.0)</carbon.kernel.package.import.version.range>
+        <carbon.kernel.package.import.version.range>[4.5.0, 5.0.0)</carbon.kernel.package.import.version.range>
         <carbon.logging.imp.pkg.version.range>[1.2.17, 2.0.0)</carbon.logging.imp.pkg.version.range>
         <carbon.user.api.imp.pkg.version.range>[1.0.1, 2.0.0)</carbon.user.api.imp.pkg.version.range>
-        <carbon.identity.framework.package.import.version.range>[5.0.0, 6.0.0)
+        <carbon.identity.framework.package.import.version.range>[5.13.0, 6.0.0)
         </carbon.identity.framework.package.import.version.range>
         <commons.io.wso2.osgi.version.range>[2.4.0,3.0.0)</commons.io.wso2.osgi.version.range>
         <org.apache.common.logging.version.range>[1.2.0, 2.0.0)</org.apache.common.logging.version.range>

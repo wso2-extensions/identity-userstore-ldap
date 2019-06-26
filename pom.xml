@@ -51,11 +51,6 @@
                 <version>${carbon.identity.framework.version}</version>
             </dependency>
             <dependency>
-                <groupId>commons-io.wso2</groupId>
-                <artifactId>commons-io</artifactId>
-                <version>${commons-io.wso2.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.wso2.carbon.identity.userstore.ldap</groupId>
                 <artifactId>org.wso2.carbon.ldap.server</artifactId>
                 <version>${project.version}</version>
@@ -101,11 +96,6 @@
                 <version>${apacheds.api.version}</version>
             </dependency>
             <dependency>
-                <groupId>commons-codec</groupId>
-                <artifactId>commons-codec</artifactId>
-                <version>${commons.codec.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.apache.mina</groupId>
                 <artifactId>mina-core</artifactId>
                 <version>${apache.mina.version}</version>
@@ -114,11 +104,6 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-pool2</artifactId>
                 <version>${apache.commons.pool2.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.wso2.orbit.org.bouncycastle</groupId>
-                <artifactId>bcprov-jdk15on</artifactId>
-                <version>${orbit.bcprov.jdk15on.version}</version>
             </dependency>
             <dependency>
                 <groupId>net.sf.ehcache</groupId>
@@ -308,16 +293,13 @@
         <carbon.identity.userstore.ldap.package.export.version>${project.version}
         </carbon.identity.userstore.ldap.package.export.version>
         <carbon.identity.framework.version>5.13.4</carbon.identity.framework.version>
-        <commons-io.wso2.version>2.4.0.wso2v1</commons-io.wso2.version>
         <apacheds.core.version>2.0.0.AM25</apacheds.core.version>
         <orbit.version.apacheds>${apacheds.core.version}.wso2v1</orbit.version.apacheds>
         <apacheds.api.version>2.0.0.AM2</apacheds.api.version>
         <org.slf4j.verison>1.6.1</org.slf4j.verison>
         <log4j.version>1.2.13</log4j.version>
-        <commons.codec.version>1.11</commons.codec.version>
         <apache.mina.version>2.0.19</apache.mina.version>
         <apache.commons.pool2.version>2.6.0</apache.commons.pool2.version>
-        <orbit.bcprov.jdk15on.version>1.60.0.wso2v1</orbit.bcprov.jdk15on.version>
         <sf.ehcache.version>2.10.4</sf.ehcache.version>
         <maven.scr.plugin.version>1.7.2</maven.scr.plugin.version>
         <maven.bundle.plugin.version>2.4.0</maven.bundle.plugin.version>

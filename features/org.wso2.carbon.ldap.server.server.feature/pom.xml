@@ -35,10 +35,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.apache.mina</groupId>
             <artifactId>mina-core</artifactId>
         </dependency>
@@ -47,20 +43,12 @@
             <artifactId>commons-pool2</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wso2.orbit.org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15on</artifactId>
-        </dependency>
-        <dependency>
             <groupId>net.sf.ehcache</groupId>
             <artifactId>ehcache</artifactId>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon.identity.userstore.ldap</groupId>
             <artifactId>org.wso2.carbon.ldap.server</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>commons-io.wso2</groupId>
-            <artifactId>commons-io</artifactId>
         </dependency>
         <dependency>
             <groupId>org.wso2.orbit.org.apache.directory</groupId>
@@ -120,14 +108,11 @@
                                 </properties>
                             </adviceFile>
                             <bundles>
-                                <bundleDef>org.wso2.orbit.org.bouncycastle:bcprov-jdk15on</bundleDef>
-                                <bundleDef>commons-codec:commons-codec</bundleDef>
-                                <bundleDef>org.apache.mina:mina-core</bundleDef>
-                                <bundleDef>net.sf.ehcache:ehcache</bundleDef>
                                 <bundleDef>org.wso2.carbon.identity.userstore.ldap:org.wso2.carbon.ldap.server</bundleDef>
                                 <bundleDef>org.wso2.orbit.org.apache.directory:apacheds</bundleDef>
-                                <bundleDef>commons-io.wso2:commons-io</bundleDef>
+                                <bundleDef>org.apache.mina:mina-core</bundleDef>
                                 <bundleDef>org.apache.commons:commons-pool2</bundleDef>
+                                <bundleDef>net.sf.ehcache:ehcache</bundleDef>
                             </bundles>
                             <importFeatures>
                                 <importFeatureDef>org.wso2.carbon.core:compatible:${carbon.kernel.version}

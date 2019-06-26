@@ -16,7 +16,8 @@
   ~  specific language governing permissions and limitations
   ~  under the License.
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
         <groupId>org.wso2.carbon.identity.userstore.ldap</groupId>
@@ -34,16 +35,24 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.wso2.orbit.org.apache.directory</groupId>
-            <artifactId>apacheds</artifactId>
+            <groupId>org.apache.mina</groupId>
+            <artifactId>mina-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon.identity.userstore.ldap</groupId>
             <artifactId>org.wso2.carbon.ldap.server</artifactId>
         </dependency>
         <dependency>
-            <groupId>commons-io.wso2</groupId>
-            <artifactId>commons-io</artifactId>
+            <groupId>org.wso2.orbit.org.apache.directory</groupId>
+            <artifactId>apacheds</artifactId>
         </dependency>
     </dependencies>
 
@@ -99,9 +108,11 @@
                                 </properties>
                             </adviceFile>
                             <bundles>
-                                <bundleDef>org.wso2.orbit.org.apache.directory:apacheds</bundleDef>
                                 <bundleDef>org.wso2.carbon.identity.userstore.ldap:org.wso2.carbon.ldap.server</bundleDef>
-                                <bundleDef>commons-io.wso2:commons-io</bundleDef>
+                                <bundleDef>org.wso2.orbit.org.apache.directory:apacheds</bundleDef>
+                                <bundleDef>org.apache.mina:mina-core</bundleDef>
+                                <bundleDef>org.apache.commons:commons-pool2</bundleDef>
+                                <bundleDef>net.sf.ehcache:ehcache</bundleDef>
                             </bundles>
                             <importFeatures>
                                 <importFeatureDef>org.wso2.carbon.core:compatible:${carbon.kernel.version}
@@ -121,9 +132,9 @@
                         <phase>install</phase>
                         <configuration>
                             <tasks>
-                                <delete dir="src/main/resources" />
-                                <delete dir="src/main" />
-                                <delete dir="src" />
+                                <delete dir="src/main/resources"/>
+                                <delete dir="src/main"/>
+                                <delete dir="src"/>
                             </tasks>
                         </configuration>
                         <goals>
@@ -134,5 +145,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

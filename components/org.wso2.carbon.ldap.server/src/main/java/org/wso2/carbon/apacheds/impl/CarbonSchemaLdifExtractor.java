@@ -20,7 +20,7 @@
 package org.wso2.carbon.apacheds.impl;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.directory.shared.ldap.schema.ldif.extractor.SchemaLdifExtractor;
+import org.apache.directory.api.ldap.schema.extractor.SchemaLdifExtractor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.wso2.carbon.ldap.server.util.IdentityIOStreamUtils;

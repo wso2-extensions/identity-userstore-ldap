@@ -284,7 +284,7 @@ public class ApacheLDAPServer implements LDAPServer {
                     try {
                         passwordAttribute.add(passwordToStore.getBytes());
                     } catch (LdapInvalidAttributeValueException e) {
-                        String msg = "Failed .";
+                        String msg = "Adding password attribute failed .";
                         logger.error(msg, e);
                         throw new DirectoryServerException(msg, e);
                     }

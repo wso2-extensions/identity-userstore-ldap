@@ -20,7 +20,7 @@
     <parent>
         <groupId>org.wso2</groupId>
         <artifactId>wso2</artifactId>
-        <version>1</version>
+        <version>1.2</version>
     </parent>
 
     <groupId>org.wso2.carbon.identity.userstore.ldap</groupId>
@@ -275,10 +275,10 @@
         </pluginRepository>
     </pluginRepositories>
     <properties>
-        <carbon.kernel.version>4.5.0-m1</carbon.kernel.version>
+        <carbon.kernel.version>4.5.0-m3</carbon.kernel.version>
         <carbon.identity.userstore.ldap.package.export.version>${project.version}
         </carbon.identity.userstore.ldap.package.export.version>
-        <carbon.identity.framework.version>5.13.4</carbon.identity.framework.version>
+        <carbon.identity.framework.version>5.13.42-SNAPSHOT</carbon.identity.framework.version>
         <apacheds.core.version>2.0.0.AM25</apacheds.core.version>
         <orbit.version.apacheds>${apacheds.core.version}.wso2v1</orbit.version.apacheds>
         <apacheds.api.version>2.0.0.AM2</apacheds.api.version>

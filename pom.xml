@@ -119,10 +119,11 @@
                 <artifactId>slf4j-log4j12</artifactId>
                 <version>${org.slf4j.verison}</version>
             </dependency>
+            <!-- Pax Logging -->
             <dependency>
-                <groupId>log4j</groupId>
-                <artifactId>log4j</artifactId>
-                <version>${log4j.version}</version>
+                <groupId>org.ops4j.pax.logging</groupId>
+                <artifactId>pax-logging-api</artifactId>
+                <version>${pax.logging.api.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -283,7 +284,6 @@
         <orbit.version.apacheds>${apacheds.core.version}.wso2v1</orbit.version.apacheds>
         <apacheds.api.version>2.0.0.AM2</apacheds.api.version>
         <org.slf4j.verison>1.6.1</org.slf4j.verison>
-        <log4j.version>1.2.13</log4j.version>
         <apache.mina.version>2.0.19</apache.mina.version>
         <apache.commons.pool2.version>2.6.0</apache.commons.pool2.version>
         <sf.ehcache.version>2.10.4</sf.ehcache.version>
@@ -291,7 +291,6 @@
         <maven.compiler.plugin.version>2.3.1</maven.compiler.plugin.version>
         <carbon.p2.plugin.version>1.5.3</carbon.p2.plugin.version>
         <carbon.kernel.package.import.version.range>[4.5.0, 5.0.0)</carbon.kernel.package.import.version.range>
-        <carbon.logging.imp.pkg.version.range>[1.2.17, 2.0.0)</carbon.logging.imp.pkg.version.range>
         <carbon.user.api.imp.pkg.version.range>[1.0.1, 2.0.0)</carbon.user.api.imp.pkg.version.range>
         <carbon.identity.framework.package.import.version.range>[5.13.0, 6.0.0)
         </carbon.identity.framework.package.import.version.range>
@@ -303,6 +302,9 @@
         <axiom.osgi.version.range>[1.2.11, 2.0.0)</axiom.osgi.version.range>
         <jacoco.maven.plugin.version>0.8.0</jacoco.maven.plugin.version>
         <maven.surefire.plugin.version>2.21.0</maven.surefire.plugin.version>
+
+        <!-- Pax Logging Version -->
+        <pax.logging.api.version>1.10.1</pax.logging.api.version>
     </properties>
     <modules>
         <module>components/org.wso2.carbon.ldap.server</module>

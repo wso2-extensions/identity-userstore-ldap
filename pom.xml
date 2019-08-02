@@ -205,6 +205,25 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>buildnumber-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <!--This parameter disables doclint-->
+                            <doclint>none</doclint>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
     <repositories>
@@ -279,7 +298,7 @@
         <carbon.kernel.version>4.5.0-m3</carbon.kernel.version>
         <carbon.identity.userstore.ldap.package.export.version>${project.version}
         </carbon.identity.userstore.ldap.package.export.version>
-        <carbon.identity.framework.version>5.13.42-SNAPSHOT</carbon.identity.framework.version>
+        <carbon.identity.framework.version>5.14.0</carbon.identity.framework.version>
         <apacheds.core.version>2.0.0.AM25</apacheds.core.version>
         <orbit.version.apacheds>${apacheds.core.version}.wso2v1</orbit.version.apacheds>
         <apacheds.api.version>2.0.0.AM2</apacheds.api.version>
@@ -292,7 +311,7 @@
         <carbon.p2.plugin.version>1.5.3</carbon.p2.plugin.version>
         <carbon.kernel.package.import.version.range>[4.5.0, 5.0.0)</carbon.kernel.package.import.version.range>
         <carbon.user.api.imp.pkg.version.range>[1.0.1, 2.0.0)</carbon.user.api.imp.pkg.version.range>
-        <carbon.identity.framework.package.import.version.range>[5.13.0, 6.0.0)
+        <carbon.identity.framework.package.import.version.range>[5.14.0, 6.0.0)
         </carbon.identity.framework.package.import.version.range>
         <commons.io.wso2.osgi.version.range>[2.4.0,3.0.0)</commons.io.wso2.osgi.version.range>
         <org.apache.common.logging.version.range>[1.2.0, 2.0.0)</org.apache.common.logging.version.range>

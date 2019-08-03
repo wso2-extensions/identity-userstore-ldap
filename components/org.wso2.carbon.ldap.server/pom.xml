@@ -53,8 +53,8 @@
             <artifactId>slf4j-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
+            <groupId>org.ops4j.pax.logging</groupId>
+            <artifactId>pax-logging-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.directory.server</groupId>
@@ -107,7 +107,6 @@
                             org.slf4j; version="${org.slf4j.imp.pkg.version.range}",
 
                             org.apache.axiom.*; version="${axiom.osgi.version.range}",
-                            org.apache.log4j; version="${carbon.logging.imp.pkg.version.range}",
                             org.apache.commons.logging; version="${org.apache.common.logging.version.range}",
                             org.apache.commons.io; version="${commons.io.wso2.osgi.version.range}",
 

@@ -20,7 +20,8 @@
 
 package org.wso2.carbon.ldap.server.tenant;
 
-import org.apache.log4j.Logger;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.wso2.carbon.apacheds.AdminInfo;
 import org.wso2.carbon.apacheds.PartitionInfo;
 import org.wso2.carbon.apacheds.PartitionManager;
@@ -34,7 +35,7 @@ import org.wso2.carbon.user.core.tenant.Tenant;
 
 public class LDAPTenantManagerService implements LDAPTenantManager {
 
-    private final Logger logger = Logger.getLogger(LDAPTenantManagerService.class);
+    private final Log logger = LogFactory.getLog(LDAPTenantManagerService.class);
     private PartitionManager ldapPartitionManager = null;
     private LDAPConfigurationBuilder ldapConfigurationBuilder = null;
 

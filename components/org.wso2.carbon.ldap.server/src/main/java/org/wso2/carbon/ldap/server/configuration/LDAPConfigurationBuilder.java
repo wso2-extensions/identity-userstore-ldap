@@ -21,7 +21,8 @@ package org.wso2.carbon.ldap.server.configuration;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.impl.builder.StAXOMBuilder;
-import org.apache.log4j.Logger;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.wso2.carbon.apacheds.AdminGroupInfo;
 import org.wso2.carbon.apacheds.AdminInfo;
 import org.wso2.carbon.apacheds.KdcConfiguration;
@@ -57,7 +58,7 @@ public class LDAPConfigurationBuilder {
 
     private static String CARBON_KDC_PORT_CONFIG_SECTION = "Ports.EmbeddedLDAP.KDCServerPort";
     private static int DEFAULT_KDC_SERVER_PORT = 8000;
-    private Logger logger = Logger.getLogger(LDAPConfigurationBuilder.class);
+    private Log logger = LogFactory.getLog(LDAPConfigurationBuilder.class);
     private String userMgtXMLFilePath = null;
     private InputStream configurationFileStream;
     /*Password to connect with the embedded-ldap server*/

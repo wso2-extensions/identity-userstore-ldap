@@ -301,9 +301,10 @@ public class ApacheKDCServer implements KDCServer {
     @Override
     public void stop() throws DirectoryServerException {
 
-        this.kdcServer.stop();
-        logger.info("KDC server stopped ...");
-
+        if (this.kdcServer != null) {
+            this.kdcServer.stop();
+            logger.info("KDC server stopped ...");
+        }
     }
 
     private void configureTransportHandlers(KdcConfiguration configuration) {

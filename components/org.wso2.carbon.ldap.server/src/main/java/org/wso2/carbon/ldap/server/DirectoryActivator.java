@@ -41,7 +41,7 @@ import java.io.FileNotFoundException;
 
 public class DirectoryActivator implements BundleActivator {
 
-    private final Log log = LogFactory.getLog(DirectoryActivator.class);
+    private static final Log log = LogFactory.getLog(DirectoryActivator.class);
 
     private LDAPServer ldapServer;
     private KDCServer kdcServer;

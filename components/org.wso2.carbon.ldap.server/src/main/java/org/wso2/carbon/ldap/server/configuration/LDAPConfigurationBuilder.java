@@ -58,7 +58,7 @@ public class LDAPConfigurationBuilder {
 
     private static String CARBON_KDC_PORT_CONFIG_SECTION = "Ports.EmbeddedLDAP.KDCServerPort";
     private static int DEFAULT_KDC_SERVER_PORT = 8000;
-    private Log logger = LogFactory.getLog(LDAPConfigurationBuilder.class);
+    private static final Log logger = LogFactory.getLog(LDAPConfigurationBuilder.class);
     private String userMgtXMLFilePath = null;
     private InputStream configurationFileStream;
     /*Password to connect with the embedded-ldap server*/

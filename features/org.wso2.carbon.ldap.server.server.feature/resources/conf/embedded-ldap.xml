@@ -103,8 +103,7 @@
   -->
   <PartitionAdmin>
     <Property name="uid">admin</Property>
-    <Property name="firstName">admin</Property>
-    <Property name="lastName">admin</Property>
+    <Property name="firstName">Administrator</Property>
     <Property name="email">admin@wso2.com</Property>
     <Property name="password">admin</Property>
     <Property name="passwordType">SHA</Property>

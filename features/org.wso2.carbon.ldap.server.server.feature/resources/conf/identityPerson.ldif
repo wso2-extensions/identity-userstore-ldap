@@ -154,6 +154,6 @@ objectClasses: ( 1.3.6.1.4.1.37505.1.101
     DESC 'identityPerson'
     SUP scimPerson
     STRUCTURAL
-    MAY  ( primaryChallenges $ challenges $ firstChallenge $ secondChallenge $ oneTimePassword $ accountLock $ temporaryEmail $ recoveryEmail $ passwordChangeRequired $ passwordTimestamp $ temporaryLock $ lastFailedAttemptTime $ failedLoginAttempts $ lastLogonTime $ unlockTime $ verifyEmail $ askPassword $ forcePasswordReset $ failedRecoveryAttempts $ primaryChallengeQuestion $ emailVerified $ challengeQuestionUris $ failedLockoutCount $ lastLoginTime $ lastPasswordUpdate $ phoneVerified $ accountDisabled $ lockedReason $ failedLockoutCount )
+    MAY  ( primaryChallenges $ challenges $ firstChallenge $ secondChallenge $ oneTimePassword $ accountLock $ temporaryEmail $ recoveryEmail $ passwordChangeRequired $ passwordTimestamp $ temporaryLock $ lastFailedAttemptTime $ failedLoginAttempts $ lastLogonTime $ unlockTime $ verifyEmail $ askPassword $ forcePasswordReset $ failedRecoveryAttempts $ primaryChallengeQuestion $ emailVerified $ challengeQuestionUris $ failedLockoutCount $ lastLoginTime $ lastPasswordUpdate $ phoneVerified $ accountDisabled $ lockedReason )
  )
 -

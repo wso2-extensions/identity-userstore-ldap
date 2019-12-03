@@ -19,34 +19,34 @@
 
 package org.wso2.carbon.apacheds.impl;
 
-
 import org.apache.axiom.om.util.Base64;
-import org.apache.directory.server.core.CoreSession;
-import org.apache.directory.server.core.DirectoryService;
-import org.apache.directory.server.core.LdapPrincipal;
-import org.apache.directory.server.core.factory.DirectoryServiceFactory;
-import org.apache.directory.server.core.interceptor.Interceptor;
+import org.apache.directory.api.ldap.model.constants.SupportedSaslMechanisms;
+import org.apache.directory.api.ldap.model.entry.Attribute;
+import org.apache.directory.api.ldap.model.entry.DefaultAttribute;
+import org.apache.directory.api.ldap.model.entry.DefaultModification;
+import org.apache.directory.api.ldap.model.entry.Modification;
+import org.apache.directory.api.ldap.model.entry.ModificationOperation;
+import org.apache.directory.api.ldap.model.exception.LdapException;
+import org.apache.directory.api.ldap.model.exception.LdapInvalidAttributeValueException;
+import org.apache.directory.api.ldap.model.schema.AttributeType;
+import org.apache.directory.api.ldap.model.schema.AttributesFactory;
+import org.apache.directory.api.ldap.model.schema.SchemaManager;
+import org.apache.directory.api.ldap.model.schema.registries.AttributeTypeRegistry;
+import org.apache.directory.server.core.api.CoreSession;
+import org.apache.directory.server.core.api.DirectoryService;
+import org.apache.directory.server.core.api.LdapPrincipal;
+import org.apache.directory.server.core.api.interceptor.Interceptor;
 import org.apache.directory.server.core.kerberos.KeyDerivationInterceptor;
 import org.apache.directory.server.ldap.LdapServer;
-import org.apache.directory.server.ldap.handlers.bind.MechanismHandler;
-import org.apache.directory.server.ldap.handlers.bind.cramMD5.CramMd5MechanismHandler;
-import org.apache.directory.server.ldap.handlers.bind.digestMD5.DigestMd5MechanismHandler;
-import org.apache.directory.server.ldap.handlers.bind.gssapi.GssapiMechanismHandler;
-import org.apache.directory.server.ldap.handlers.bind.ntlm.NtlmMechanismHandler;
-import org.apache.directory.server.ldap.handlers.bind.plain.PlainMechanismHandler;
 import org.apache.directory.server.ldap.handlers.extended.StartTlsHandler;
 import org.apache.directory.server.ldap.handlers.extended.StoredProcedureExtendedOperationHandler;
+import org.apache.directory.server.ldap.handlers.sasl.MechanismHandler;
+import org.apache.directory.server.ldap.handlers.sasl.cramMD5.CramMd5MechanismHandler;
+import org.apache.directory.server.ldap.handlers.sasl.digestMD5.DigestMd5MechanismHandler;
+import org.apache.directory.server.ldap.handlers.sasl.gssapi.GssapiMechanismHandler;
+import org.apache.directory.server.ldap.handlers.sasl.ntlm.NtlmMechanismHandler;
+import org.apache.directory.server.ldap.handlers.sasl.plain.PlainMechanismHandler;
 import org.apache.directory.server.protocol.shared.transport.TcpTransport;
-import org.apache.directory.shared.ldap.constants.SupportedSaslMechanisms;
-import org.apache.directory.shared.ldap.entry.DefaultServerAttribute;
-import org.apache.directory.shared.ldap.entry.EntryAttribute;
-import org.apache.directory.shared.ldap.entry.Modification;
-import org.apache.directory.shared.ldap.entry.ModificationOperation;
-import org.apache.directory.shared.ldap.entry.ServerModification;
-import org.apache.directory.shared.ldap.exception.LdapException;
-import org.apache.directory.shared.ldap.schema.AttributeType;
-import org.apache.directory.shared.ldap.schema.SchemaManager;
-import org.apache.directory.shared.ldap.schema.registries.AttributeTypeRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.wso2.carbon.apacheds.LDAPConfiguration;
@@ -54,13 +54,13 @@ import org.wso2.carbon.apacheds.LDAPServer;
 import org.wso2.carbon.apacheds.PartitionManager;
 import org.wso2.carbon.ldap.server.exception.DirectoryServerException;
 
-import javax.naming.NamingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.naming.NamingException;
 
 /**
  * An implementation of LDAP server. This wraps apacheds implementation and provides an
@@ -86,7 +86,6 @@ public class ApacheLDAPServer implements LDAPServer {
                     "Configuration is null");
         }
 
-
         this.ldapConfigurations = configurations;
 
         try {
@@ -105,10 +104,12 @@ public class ApacheLDAPServer implements LDAPServer {
     }
 
     public DirectoryService getService() {
+
         return service;
     }
 
     public void setService(DirectoryService service) {
+
         this.service = service;
     }
 
@@ -128,8 +129,7 @@ public class ApacheLDAPServer implements LDAPServer {
     }
 
     @Override
-    public void stop()
-            throws DirectoryServerException {
+    public void stop() throws DirectoryServerException {
 
         try {
 
@@ -139,22 +139,21 @@ public class ApacheLDAPServer implements LDAPServer {
         } catch (Exception e) {
 
             logger.error("Error stopping LDAP server.", e);
-            throw new DirectoryServerException("Can not start the server ", e);
+            throw new DirectoryServerException("Can not stop the server ", e);
         }
     }
 
     @Override
-    public PartitionManager getPartitionManager()
-            throws DirectoryServerException {
+    public PartitionManager getPartitionManager() throws DirectoryServerException {
 
         return this.partitionManager;
     }
 
-    protected void initializeDefaultDirectoryService()
-            throws DirectoryServerException {
+    protected void initializeDefaultDirectoryService() throws DirectoryServerException {
+
         try {
 
-            DirectoryServiceFactory factory = CarbonDirectoryServiceFactory.DEFAULT;
+            CarbonDirectoryServiceFactory factory = CarbonDirectoryServiceFactory.DEFAULT;
             this.service = factory.getDirectoryService();
 
             configureDirectoryService();
@@ -166,8 +165,8 @@ public class ApacheLDAPServer implements LDAPServer {
         }
     }
 
-    private AttributeType getAttributeType(String attributeName)
-            throws DirectoryServerException {
+    private AttributeType getAttributeType(String attributeName) throws DirectoryServerException {
+
         if (this.service != null) {
             SchemaManager schemaManager = this.service.getSchemaManager();
             if (schemaManager != null) {
@@ -204,11 +203,10 @@ public class ApacheLDAPServer implements LDAPServer {
     }
 
     @Override
-    public String getConnectionDomainName()
-            throws DirectoryServerException {
+    public String getConnectionDomainName() throws DirectoryServerException {
 
         LdapPrincipal adminPrinciple = getAdminPrinciple();
-        return adminPrinciple.getClonedName().getName();
+        return adminPrinciple.getDn().getName();
     }
 
     private LdapPrincipal getAdminPrinciple()
@@ -248,8 +246,7 @@ public class ApacheLDAPServer implements LDAPServer {
     }
 
     @Override
-    public void changeConnectionUserPassword(String password)
-            throws DirectoryServerException {
+    public void changeConnectionUserPassword(String password) throws DirectoryServerException {
 
         if (this.service != null) {
             CoreSession adminSession;
@@ -282,20 +279,25 @@ public class ApacheLDAPServer implements LDAPServer {
                     passwordToStore = passwordToStore + hash;
 
                     adminPrincipal.setUserPassword(passwordToStore.getBytes());
+                    AttributesFactory attributesFactory = new AttributesFactory();
+                    Attribute passwordAttribute = new DefaultAttribute(getAttributeType("userPassword"));
+                    try {
+                        passwordAttribute.add(passwordToStore.getBytes());
+                    } catch (LdapInvalidAttributeValueException e) {
+                        String msg = "Adding password attribute failed .";
+                        logger.error(msg, e);
+                        throw new DirectoryServerException(msg, e);
+                    }
 
-                    EntryAttribute passwordAttribute = new DefaultServerAttribute(
-                            getAttributeType("userPassword"));
-                    passwordAttribute.add(passwordToStore.getBytes());
-
-                    ServerModification serverModification =
-                            new ServerModification(ModificationOperation.REPLACE_ATTRIBUTE,
-                                    passwordAttribute);
+                    Modification serverModification = new DefaultModification();
+                    serverModification.setOperation(ModificationOperation.REPLACE_ATTRIBUTE);
+                    serverModification.setAttribute(passwordAttribute);
 
                     List<Modification> modifiedList = new ArrayList<Modification>();
                     modifiedList.add(serverModification);
 
                     try {
-                        adminSession.modify(adminPrincipal.getClonedName(), modifiedList);
+                        adminSession.modify(adminPrincipal.getDn(), modifiedList);
                     } catch (Exception e) {
                         String msg = "Failed changing connection user password.";
                         logger.error(msg, e);
@@ -322,8 +324,7 @@ public class ApacheLDAPServer implements LDAPServer {
 
     }
 
-    private void configureDirectoryService()
-            throws NamingException, DirectoryServerException {
+    private void configureDirectoryService() throws NamingException, DirectoryServerException {
 
         if (null == this.ldapConfigurations) {
             throw new DirectoryServerException("Directory service is not initialized.");
@@ -349,21 +350,18 @@ public class ApacheLDAPServer implements LDAPServer {
 
     }
 
-    protected void initializeLDAPServer()
-            throws DirectoryServerException {
+    protected void initializeLDAPServer() throws DirectoryServerException {
 
         if (null == this.service || null == this.ldapConfigurations) {
             throw new DirectoryServerException(
                     "The default apacheds service is not initialized. " +
                             "Make sure apacheds service is initialized first.");
         }
-
         this.ldapServer = new LdapServer();
 
         this.ldapServer.setTransports(new TcpTransport(this.ldapConfigurations.getLdapPort()));
 
         // set server initial properties
-        this.ldapServer.setAllowAnonymousAccess(false);
         this.ldapServer.setMaxTimeLimit(this.ldapConfigurations.getMaxTimeLimit());
         this.ldapServer.setMaxSizeLimit(this.ldapConfigurations.getMaxSizeLimit());
         this.ldapServer.setSaslHost(this.ldapConfigurations.getSaslHostName());
@@ -384,6 +382,7 @@ public class ApacheLDAPServer implements LDAPServer {
     }
 
     private void setupSaslMechanisms() {
+
         Map<String, MechanismHandler> mechanismHandlerMap = new HashMap<String, MechanismHandler>();
 
         mechanismHandlerMap.put(SupportedSaslMechanisms.PLAIN, new PlainMechanismHandler());

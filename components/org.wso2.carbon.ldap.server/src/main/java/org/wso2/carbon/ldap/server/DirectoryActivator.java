@@ -19,7 +19,8 @@
 
 package org.wso2.carbon.ldap.server;
 
-import org.apache.log4j.Logger;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.wso2.carbon.apacheds.DirectoryServiceFactory;
@@ -40,7 +41,7 @@ import java.io.FileNotFoundException;
 
 public class DirectoryActivator implements BundleActivator {
 
-    private final Logger log = Logger.getLogger(DirectoryActivator.class);
+    private static final Log log = LogFactory.getLog(DirectoryActivator.class);
 
     private LDAPServer ldapServer;
     private KDCServer kdcServer;

@@ -19,15 +19,16 @@
 
 package org.wso2.carbon.apacheds.impl;
 
-import org.apache.directory.server.core.DirectoryService;
+import org.apache.directory.api.ldap.model.constants.SchemaConstants;
+import org.apache.directory.api.ldap.model.exception.LdapInvalidDnException;
+import org.apache.directory.server.core.api.DirectoryService;
 import org.apache.directory.server.core.jndi.CoreContextFactory;
+import org.apache.directory.server.kerberos.KerberosConfig;
 import org.apache.directory.server.kerberos.kdc.KdcServer;
-import org.apache.directory.server.kerberos.shared.store.KerberosAttribute;
 import org.apache.directory.server.protocol.shared.transport.TcpTransport;
 import org.apache.directory.server.protocol.shared.transport.Transport;
 import org.apache.directory.server.protocol.shared.transport.UdpTransport;
-import org.apache.directory.shared.ldap.constants.SchemaConstants;
-import org.apache.directory.shared.ldap.exception.LdapInvalidDnException;
+import org.apache.directory.shared.kerberos.KerberosAttribute;
 import org.apache.mina.util.AvailablePortFinder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +38,8 @@ import org.wso2.carbon.apacheds.LDAPServer;
 import org.wso2.carbon.apacheds.PartitionInfo;
 import org.wso2.carbon.ldap.server.exception.DirectoryServerException;
 
+import java.io.IOException;
+import java.util.Hashtable;
 import javax.naming.Context;
 import javax.naming.NamingException;
 import javax.naming.directory.Attribute;
@@ -48,8 +51,6 @@ import javax.naming.directory.InitialDirContext;
 import javax.naming.directory.ModificationItem;
 import javax.naming.ldap.InitialLdapContext;
 import javax.naming.ldap.LdapContext;
-import java.io.IOException;
-import java.util.Hashtable;
 
 /**
  * An implementation of the KDC server. This uses KDC server which comes with ApacheDS.
@@ -66,12 +67,11 @@ public class ApacheKDCServer implements KDCServer {
     private KdcServer kdcServer;
 
     public ApacheKDCServer() {
-        this.kdcServer = new KdcServer();
+
     }
 
     @Override
-    public void init(final KdcConfiguration configuration, LDAPServer ldapServer)
-            throws DirectoryServerException {
+    public void init(final KdcConfiguration configuration, LDAPServer ldapServer) throws DirectoryServerException {
 
         if (configuration == null) {
             throw new DirectoryServerException("Could not initialize KDC server. " +
@@ -90,15 +90,16 @@ public class ApacheKDCServer implements KDCServer {
 
         ApacheLDAPServer apacheLDAP = (ApacheLDAPServer) ldapServer;
 
-        this.kdcServer.setServiceName(configuration.getKdcName());
-        this.kdcServer.setKdcPrincipal(configuration.getKdcPrinciple());
-        this.kdcServer.setPrimaryRealm(configuration.getPrimaryRealm());
-        this.kdcServer.setMaximumTicketLifetime(configuration.getMaxTicketLifeTime());
-        this.kdcServer.setMaximumRenewableLifetime(configuration.getMaxRenewableLifeTime());
-        this.kdcServer.setSearchBaseDn(configuration.getSearchBaseDomainName());
-        this.kdcServer.setPaEncTimestampRequired(
-                configuration.isPreAuthenticateTimeStampRequired());
+        KerberosConfig kerberosConfig = new KerberosConfig();
+        kerberosConfig.setServicePrincipal(configuration.getKdcPrinciple());
+        kerberosConfig.setPrimaryRealm(configuration.getPrimaryRealm());
+        kerberosConfig.setMaximumTicketLifetime(configuration.getMaxTicketLifeTime());
+        kerberosConfig.setMaximumRenewableLifetime(configuration.getMaxRenewableLifeTime());
+        kerberosConfig.setPaEncTimestampRequired(configuration.isPreAuthenticateTimeStampRequired());
 
+        this.kdcServer = new KdcServer(kerberosConfig);
+        this.kdcServer.setServiceName(configuration.getKdcName());
+        this.kdcServer.setSearchBaseDn(configuration.getSearchBaseDomainName());
         configureTransportHandlers(configuration);
 
         DirectoryService directoryService = apacheLDAP.getService();
@@ -117,6 +118,7 @@ public class ApacheKDCServer implements KDCServer {
     }
 
     private void enableKerberoseSchema() throws DirectoryServerException {
+
         // check if krb5kdc is disabled
         Attributes krb5kdcAttrs;
         try {
@@ -170,7 +172,6 @@ public class ApacheKDCServer implements KDCServer {
             env.put(Context.SECURITY_AUTHENTICATION, ConfigurationConstants.SIMPLE_AUTHENTICATION);
 
             ctx = new InitialDirContext(env);
-
 
             // Set KDC principle for this partition
             Attributes attrs = getPrincipalAttributes(ConfigurationConstants.SERVER_PRINCIPLE,
@@ -232,6 +233,7 @@ public class ApacheKDCServer implements KDCServer {
      */
     protected Attributes getPrincipalAttributes(String sn, String cn, String uid,
                                                 String userPassword, String principal) {
+
         Attributes attributes = new BasicAttributes(true);
         Attribute basicAttribute = new BasicAttribute("objectClass");
         basicAttribute.add("top");
@@ -250,9 +252,9 @@ public class ApacheKDCServer implements KDCServer {
         return attributes;
     }
 
-    private void setSchemaContext(KdcConfiguration configuration, DirectoryService service,
-                                  String connectionUser)
+    private void setSchemaContext(KdcConfiguration configuration, DirectoryService service, String connectionUser)
             throws DirectoryServerException {
+
         Hashtable<String, Object> env = new Hashtable<String, Object>();
         env.put(DirectoryService.JNDI_KEY, service);
         env.put(Context.SECURITY_PRINCIPAL, connectionUser);
@@ -272,8 +274,8 @@ public class ApacheKDCServer implements KDCServer {
     }
 
     @Override
-    public void start()
-            throws DirectoryServerException {
+    public void start() throws DirectoryServerException {
+
         try {
             this.kdcServer.start();
             logger.info("KDC server started ...");
@@ -292,16 +294,17 @@ public class ApacheKDCServer implements KDCServer {
 
     @Override
     public boolean isKDCServerStarted() {
+
         return this.kdcServer.isStarted();
     }
 
     @Override
-    public void stop()
-            throws DirectoryServerException {
+    public void stop() throws DirectoryServerException {
 
-        this.kdcServer.stop();
-        logger.info("KDC server stopped ...");
-
+        if (this.kdcServer != null) {
+            this.kdcServer.stop();
+            logger.info("KDC server stopped ...");
+        }
     }
 
     private void configureTransportHandlers(KdcConfiguration configuration) {
@@ -330,6 +333,7 @@ public class ApacheKDCServer implements KDCServer {
     }
 
     private int getServerPort(KdcConfiguration configuration) {
+
         int port = configuration.getKdcCommunicationPort();
 
         if (port == -1) {

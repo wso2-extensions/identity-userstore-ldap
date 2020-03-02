@@ -25,7 +25,7 @@
 
     <groupId>org.wso2.carbon.identity.userstore.ldap</groupId>
     <modelVersion>4.0.0</modelVersion>
-    <version>6.1.13-SNAPSHOT</version>
+    <version>6.2.0-SNAPSHOT</version>
     <artifactId>identity-userstore-ldap</artifactId>
     <packaging>pom</packaging>
     <name>WSO2 Carbon User Store LDAP Module</name>
@@ -295,8 +295,8 @@
         </pluginRepository>
     </pluginRepositories>
     <properties>
-        <carbon.kernel.version>4.5.0</carbon.kernel.version>
-        <carbon.kernel.feature.version>4.5.0</carbon.kernel.feature.version>
+        <carbon.kernel.version>4.6.0</carbon.kernel.version>
+        <carbon.kernel.feature.version>4.6.0</carbon.kernel.feature.version>
         <carbon.identity.userstore.ldap.package.export.version>${project.version}
         </carbon.identity.userstore.ldap.package.export.version>
         <carbon.identity.framework.version>5.14.67</carbon.identity.framework.version>

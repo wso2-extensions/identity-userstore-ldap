@@ -7,4 +7,13 @@ org.eclipse.equinox.p2.touchpoint.natives.copy(source:${installFolder}/../featur
 org.eclipse.equinox.p2.touchpoint.natives.copy(source:${installFolder}/../features/org.wso2.carbon.ldap.server.server_${feature.version}/conf/scimPerson.ldif,target:${installFolder}/../../resources/identity/ldif/scimPerson.ldif,overwrite:true);\
 org.eclipse.equinox.p2.touchpoint.natives.copy(source:${installFolder}/../features/org.wso2.carbon.ldap.server.server_${feature.version}/conf/identityPerson.ldif,target:${installFolder}/../../resources/identity/ldif/identityPerson.ldif,overwrite:true);\
 org.eclipse.equinox.p2.touchpoint.natives.copy(source:${installFolder}/../features/org.wso2.carbon.ldap.server.server_${feature.version}/conf/embedded-ldap.xml,target:${installFolder}/../../conf/identity/embedded-ldap.xml,overwrite:true);\
+org.eclipse.equinox.p2.touchpoint.natives.mkdir(path:${installFolder}/../../../repository); \
+org.eclipse.equinox.p2.touchpoint.natives.mkdir(path:${installFolder}/../../../repository/resources); \
+org.eclipse.equinox.p2.touchpoint.natives.mkdir(path:${installFolder}/../../../repository/resources/conf); \
+org.eclipse.equinox.p2.touchpoint.natives.mkdir(path:${installFolder}/../../../repository/resources/conf/templates); \
+org.eclipse.equinox.p2.touchpoint.natives.mkdir(path:${installFolder}/../../../repository/resources/conf/templates/repository); \
+org.eclipse.equinox.p2.touchpoint.natives.mkdir(path:${installFolder}/../../../repository/resources/conf/templates/repository/conf); \
+org.eclipse.equinox.p2.touchpoint.natives.mkdir(path:${installFolder}/../../../repository/resources/conf/templates/repository/conf/identity); \
+org.eclipse.equinox.p2.touchpoint.natives.copy(source:${installFolder}/../features/org.wso2.carbon.ldap.server.server_${feature.version}/conf/embedded-ldap.xml.j2,target:${installFolder}/../../resources/conf/templates/repository/conf/identity/embedded-ldap.xml.j2,overwrite:true);\
+org.eclipse.equinox.p2.touchpoint.natives.copy(source:${installFolder}/../features/org.wso2.carbon.ldap.server.server_${feature.version}/conf/org.wso2.carbon.ldap.server.server.feature.default.json,target:${installFolder}/../../resources/conf/org.wso2.carbon.ldap.server.server.feature.default.json,overwrite:true);\
 org.eclipse.equinox.p2.touchpoint.natives.copy(source:${installFolder}/../features/org.wso2.carbon.ldap.server.server_${feature.version}/conf/is-default-schema.zip,target:${installFolder}/../../data/is-default-schema.zip,overwrite:true);\

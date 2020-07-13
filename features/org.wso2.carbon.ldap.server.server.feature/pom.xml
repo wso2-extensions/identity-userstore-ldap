@@ -73,6 +73,8 @@
                                     <directory>resources</directory>
                                     <includes>
                                         <include>conf/embedded-ldap.xml</include>
+                                        <include>conf/embedded-ldap.xml.j2</include>
+                                        <include>conf/*.json</include>
                                         <include>conf/is-default-schema.zip</include>
                                         <include>conf/identityPerson.ldif</include>
                                         <include>conf/scimPerson.ldif</include>

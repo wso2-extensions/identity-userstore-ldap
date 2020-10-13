@@ -22,7 +22,7 @@
         <groupId>org.wso2.carbon.identity.userstore.ldap</groupId>
         <artifactId>identity-userstore-ldap</artifactId>
         <relativePath>../../pom.xml</relativePath>
-        <version>6.2.2-SNAPSHOT</version>
+        <version>6.2.2</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>

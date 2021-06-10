@@ -26,17 +26,17 @@
 
     <groupId>org.wso2.carbon.identity.userstore.ldap</groupId>
     <modelVersion>4.0.0</modelVersion>
-    <version>6.2.10-SNAPSHOT</version>
+    <version>6.2.10</version>
     <artifactId>identity-userstore-ldap</artifactId>
     <packaging>pom</packaging>
     <name>WSO2 Carbon User Store LDAP Module</name>
-    <description/>
+    <description />
     <url>http://wso2.org</url>
     <scm>
         <url>https://github.com/wso2-extensions/identity-userstore-ldap.git</url>
         <developerConnection>scm:git:https://github.com/wso2-extensions/identity-userstore-ldap.git</developerConnection>
         <connection>scm:git:https://github.com/wso2-extensions/identity-userstore-ldap.git</connection>
-        <tag>HEAD</tag>
+        <tag>v6.2.10</tag>
     </scm>
     <dependencyManagement>
         <dependencies>

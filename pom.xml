@@ -239,7 +239,7 @@
         <org.slf4j.verison>1.6.1</org.slf4j.verison>
         <apache.mina.version>2.0.19</apache.mina.version>
         <apache.commons.pool2.version>2.6.0</apache.commons.pool2.version>
-        <sf.ehcache.version>2.10.4</sf.ehcache.version>
+        <sf.ehcache.version>2.10.9.2</sf.ehcache.version>
         <maven.bundle.plugin.version>3.2.0</maven.bundle.plugin.version>
         <maven.compiler.plugin.version>2.3.1</maven.compiler.plugin.version>
         <carbon.p2.plugin.version>1.5.3</carbon.p2.plugin.version>

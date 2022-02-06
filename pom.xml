@@ -304,7 +304,7 @@
         <orbit.version.apacheds>${apacheds.core.version}.wso2v1</orbit.version.apacheds>
         <apacheds.api.version>2.0.0.AM2</apacheds.api.version>
         <org.slf4j.verison>1.6.1</org.slf4j.verison>
-        <apache.mina.version>2.0.19</apache.mina.version>
+        <apache.mina.version>2.1.5</apache.mina.version>
         <apache.commons.pool2.version>2.6.0</apache.commons.pool2.version>
         <sf.ehcache.version>2.10.4</sf.ehcache.version>
         <maven.bundle.plugin.version>3.2.0</maven.bundle.plugin.version>

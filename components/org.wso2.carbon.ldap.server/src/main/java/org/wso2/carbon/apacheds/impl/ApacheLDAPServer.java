@@ -144,7 +144,7 @@ public class ApacheLDAPServer implements LDAPServer {
     }
 
     @Override
-    public PartitionManager getPartitionManager() throws DirectoryServerException {
+    public PartitionManager getPartitionManager() {
 
         return this.partitionManager;
     }
@@ -373,7 +373,6 @@ public class ApacheLDAPServer implements LDAPServer {
         setupSaslMechanisms();
 
         try {
-            this.ldapServer.addExtendedOperationHandler(new StartTlsHandler());
             this.ldapServer.addExtendedOperationHandler(
                     new StoredProcedureExtendedOperationHandler());
         } catch (Exception e) {

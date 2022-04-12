@@ -31,7 +31,6 @@ import org.apache.directory.api.ldap.schema.manager.impl.DefaultSchemaManager;
 import org.apache.directory.api.util.exception.Exceptions;
 import org.apache.directory.server.constants.ServerDNConstants;
 import org.apache.directory.server.core.DefaultDirectoryService;
-import org.apache.directory.server.core.api.CacheService;
 import org.apache.directory.server.core.api.DirectoryService;
 import org.apache.directory.server.core.api.InstanceLayout;
 import org.apache.directory.server.core.api.schema.SchemaPartition;
@@ -209,10 +208,6 @@ class CarbonDirectoryServiceFactory {
     private void build(String name) throws Exception {
 
         directoryService.setInstanceId(name);
-        CacheService cacheService = new CacheService();
-        cacheService.initialize(directoryService.getInstanceLayout(), name);
-
-        directoryService.setCacheService(cacheService);
 
         buildWorkingDirectory(name);
 

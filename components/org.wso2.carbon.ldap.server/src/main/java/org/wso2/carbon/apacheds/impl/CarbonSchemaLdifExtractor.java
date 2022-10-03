@@ -146,8 +146,13 @@ class CarbonSchemaLdifExtractor implements SchemaLdifExtractor {
                 int size;
                 byte[] buffer = new byte[2048];
 
-                FileOutputStream extractedSchemaFile = new FileOutputStream(
-                        new File(basePath, entry.getName()));
+                final File zipEntryFile = new File(basePath, entry.getName());
+
+                if (!zipEntryFile.toPath().normalize().startsWith(basePath)) {
+                    throw new IOException("Bad zip entry");
+                }
+
+                FileOutputStream extractedSchemaFile = new FileOutputStream(zipEntryFile);
                 BufferedOutputStream extractingBufferedStream =
                         new BufferedOutputStream(extractedSchemaFile, buffer.length);
                 try {
